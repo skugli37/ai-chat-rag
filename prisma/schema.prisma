@@ -10,12 +10,17 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// ============ CORE MODELS ============
+
 model Conversation {
   id          String     @id @default(cuid())
   title       String?
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
+  
   messages    Message[]
+  memories    Memory[]
+  agentRuns   AgentRun[]
   
   @@map("conversations")
 }
@@ -23,35 +28,209 @@ model Conversation {
 model Message {
   id             String       @id @default(cuid())
   conversationId String
-  role           String       // 'user', 'assistant', 'system'
+  role           String       // 'user', 'assistant', 'system', 'agent'
   content        String
   tokens         Int          @default(0)
+  confidence     Float?       // 0-1 confidence score
+  agentName      String?      // Which agent generated this
+  parentMessageId String?
   createdAt      DateTime     @default(now())
   
-  // For branching
-  parentMessageId String?
-  parentMessage   Message?    @relation("MessageBranches", fields: [parentMessageId], references: [id])
-  childMessages   Message[]   @relation("MessageBranches")
-  
-  // For citations
+  conversation    Conversation  @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  parentMessage   Message?      @relation("MessageBranches", fields: [parentMessageId], references: [id])
+  childMessages   Message[]     @relation("MessageBranches")
+  toolCalls       ToolCall[]
   citations       Citation[]
+  reflections     Reflection[]
+  
+  @@index([conversationId])
+  @@map("messages")
+}
+
+// ============ AGENT SYSTEM ============
+
+model AgentRun {
+  id              String   @id @default(cuid())
+  conversationId  String
+  orchestratorPlan String? // JSON: full orchestration plan
+  
+  // Agent states
+  queryAnalysis    String? // JSON: query agent output
+  retrievalResults String? // JSON: retrieved chunks
+  reasoningChain   String? // JSON: chain of thought
+  finalResponse    String? // JSON: synthesized response
+  
+  // Metrics
+  totalTokens      Int      @default(0)
+  retrievalTime    Int?     // ms
+  reasoningTime    Int?     // ms
+  totalTime        Int?     // ms
+  
+  // Self-evaluation
+  selfScore       Float?    // 0-1 self-assessed quality
+  needsRefinement Boolean   @default(false)
+  refinementCount Int       @default(0)
+  
+  status          String    @default("pending") // pending, running, completed, failed
+  error           String?
+  
+  createdAt       DateTime  @default(now())
+  
+  conversation    Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  agentSteps      AgentStep[]
+  
+  @@index([conversationId])
+  @@map("agent_runs")
+}
+
+model AgentStep {
+  id          String   @id @default(cuid())
+  agentRunId  String
+  
+  agentName   String   // orchestrator, query, retrieval, reasoning, response
+  action      String   // analyze, retrieve, reason, synthesize, evaluate
+  input       String?  // JSON
+  output      String?  // JSON
+  tokens      Int      @default(0)
+  duration    Int?     // ms
+  confidence  Float?
+  success     Boolean  @default(true)
+  error       String?
+  
+  createdAt   DateTime @default(now())
+  
+  agentRun    AgentRun @relation(fields: [agentRunId], references: [id], onDelete: Cascade)
+  
+  @@index([agentRunId])
+  @@map("agent_steps")
+}
+
+model Reflection {
+  id          String   @id @default(cuid())
+  messageId   String
+  
+  // Self-evaluation
+  accuracy    Float?   // 0-1
+  completeness Float?  // 0-1
+  relevance   Float?   // 0-1
+  clarity     Float?   // 0-1
+  
+  // Improvement suggestions
+  issues      String?  // JSON array of identified issues
+  suggestions String?  // JSON array of improvement suggestions
+  
+  // Refined response
+  refinedContent String?
+  improved    Boolean  @default(false)
+  
+  createdAt   DateTime @default(now())
+  
+  message     Message  @relation(fields: [messageId], references: [id], onDelete: Cascade)
+  
+  @@map("reflections")
+}
+
+// ============ MEMORY SYSTEMS ============
+
+model Memory {
+  id              String   @id @default(cuid())
+  conversationId  String
+  
+  type            String   // working, episodic, semantic
+  content         String
+  
+  // For semantic memory (knowledge)
+  entities        String?  // JSON: extracted entities
+  relations       String?  // JSON: relations between entities
+  
+  // For episodic memory
+  summary         String?  // Brief summary
+  importance      Float    @default(0.5) // 0-1
+  
+  // Embedding for retrieval
+  embedding       String?  // JSON: 384-dim vector
+  
+  // Decay for working memory
+  accessCount     Int      @default(0)
+  lastAccessed    DateTime @default(now())
+  decayFactor     Float    @default(1.0)
+  
+  createdAt       DateTime @default(now())
   
   conversation    Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
   
   @@index([conversationId])
-  @@index([parentMessageId])
-  @@map("messages")
+  @@index([type])
+  @@map("memories")
 }
+
+// ============ KNOWLEDGE GRAPH ============
+
+model Entity {
+  id          String   @id @default(cuid())
+  name        String
+  type        String   // person, concept, place, event, etc.
+  aliases     String?  // JSON array of alternative names
+  description String?
+  embedding   String?  // JSON: 384-dim vector
+  confidence  Float    @default(1.0)
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  sourceMentions EntityMention[]
+  outgoingRelations Relation[] @relation("EntityFrom")
+  incomingRelations Relation[] @relation("EntityTo")
+  
+  @@unique([name, type])
+  @@map("entities")
+}
+
+model Relation {
+  id          String   @id @default(cuid())
+  fromEntityId String
+  toEntityId   String
+  
+  type        String   // relates_to, part_of, causes, etc.
+  confidence  Float    @default(1.0)
+  evidence    String?  // Source text
+  
+  createdAt   DateTime @default(now())
+  
+  fromEntity  Entity   @relation("EntityFrom", fields: [fromEntityId], references: [id], onDelete: Cascade)
+  toEntity    Entity   @relation("EntityTo", fields: [toEntityId], references: [id], onDelete: Cascade)
+  
+  @@map("relations")
+}
+
+model EntityMention {
+  id          String   @id @default(cuid())
+  entityId    String
+  documentId  String?
+  chunkId     String?
+  context     String?  // Surrounding text
+  position    Int?     // Character offset
+  
+  createdAt   DateTime @default(now())
+  
+  entity      Entity   @relation(fields: [entityId], references: [id], onDelete: Cascade)
+  
+  @@index([entityId])
+  @@map("entity_mentions")
+}
+
+// ============ DOCUMENT SYSTEM ============
 
 model Document {
   id          String      @id @default(cuid())
   filename    String
   content     String
-  fileType    String      // 'txt', 'md', 'pdf', 'docx', 'image'
+  fileType    String
   fileSize    Int
   chunkCount  Int         @default(0)
   createdAt   DateTime    @default(now())
   updatedAt   DateTime    @updatedAt
+  
   chunks      DocumentChunk[]
   
   @@map("documents")
@@ -62,14 +241,11 @@ model DocumentChunk {
   documentId   String
   content      String
   chunkIndex   Int
-  
-  // Real embeddings - stored as JSON array of floats
-  embedding    String?  
-  
-  // For keyword search (BM25 tokens)
-  tokens       String?  // JSON array of tokenized words
+  embedding    String?  // JSON: 384-dim vector
+  tokens       String?  // JSON: tokenized words
   
   createdAt    DateTime @default(now())
+  
   document     Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
   
   @@index([documentId])
@@ -81,8 +257,8 @@ model Citation {
   messageId   String
   documentId  String
   chunkIndex  Int
-  content     String   // The cited text
-  score       Float    // Similarity score
+  content     String
+  score       Float
   
   createdAt   DateTime @default(now())
   
@@ -92,14 +268,46 @@ model Citation {
   @@map("citations")
 }
 
+// ============ TOOL SYSTEM ============
+
+model ToolCall {
+  id          String   @id @default(cuid())
+  messageId   String
+  
+  tool        String   // calculator, web_search, code_execute, etc.
+  input       String   // JSON
+  output      String?  // JSON
+  success     Boolean  @default(true)
+  error       String?
+  
+  createdAt   DateTime @default(now())
+  
+  message     Message  @relation(fields: [messageId], references: [id], onDelete: Cascade)
+  
+  @@index([messageId])
+  @@map("tool_calls")
+}
+
+model ToolDefinition {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  description String
+  parameters  String   // JSON schema
+  enabled     Boolean  @default(true)
+  
+  createdAt   DateTime @default(now())
+  
+  @@map("tool_definitions")
+}
+
+// ============ PROMPT SYSTEM ============
+
 model SystemPrompt {
   id          String   @id @default(cuid())
   name        String
   content     String
   isDefault   Boolean  @default(false)
-  
-  // For few-shot examples
-  examples    String?  // JSON array of {input, output} pairs
+  examples    String?
   
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
@@ -112,8 +320,8 @@ model PromptTemplate {
   name        String
   description String?
   template    String
-  category    String   @default("general") // "general", "coding", "writing", "analysis"
-  variables   String?  // JSON array of variable names
+  category    String   @default("general")
+  variables   String?
   
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
@@ -121,11 +329,13 @@ model PromptTemplate {
   @@map("prompt_templates")
 }
 
+// ============ EXPORT ============
+
 model ChatExport {
   id              String   @id @default(cuid())
   conversationId  String
-  format          String   // "markdown", "pdf", "json"
-  content         String   // The exported content
+  format          String
+  content         String
   filename        String
   
   createdAt       DateTime @default(now())

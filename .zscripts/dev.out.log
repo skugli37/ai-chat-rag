@@ -934,3 +934,118 @@ prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `mai
  GET /api/system-prompts 200 in 6ms (compile: 1321µs, render: 4ms)
 prisma:query SELECT `main`.`system_prompts`.`id`, `main`.`system_prompts`.`name`, `main`.`system_prompts`.`content`, `main`.`system_prompts`.`isDefault`, `main`.`system_prompts`.`createdAt`, `main`.`system_prompts`.`updatedAt` FROM `main`.`system_prompts` WHERE 1=1 ORDER BY `main`.`system_prompts`.`createdAt` DESC LIMIT ? OFFSET ?
  GET /api/templates 200 in 4ms (compile: 1511µs, render: 3ms)
+ GET / 200 in 52ms (compile: 4ms, render: 47ms)
+ GET /api/templates 200 in 9ms (compile: 4ms, render: 4ms)
+ GET /api/system-prompts 200 in 15ms (compile: 9ms, render: 6ms)
+prisma:query SELECT 1
+prisma:query SELECT `main`.`system_prompts`.`id`, `main`.`system_prompts`.`name`, `main`.`system_prompts`.`content`, `main`.`system_prompts`.`isDefault`, `main`.`system_prompts`.`createdAt`, `main`.`system_prompts`.`updatedAt` FROM `main`.`system_prompts` WHERE 1=1 ORDER BY `main`.`system_prompts`.`createdAt` DESC LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt`, COALESCE(`aggr_selection_0_DocumentChunk`.`_aggr_count_chunks`, 0) AS `_aggr_count_chunks` FROM `main`.`documents` LEFT JOIN (SELECT `main`.`document_chunks`.`documentId`, COUNT(*) AS `_aggr_count_chunks` FROM `main`.`document_chunks` WHERE 1=1 GROUP BY `main`.`document_chunks`.`documentId`) AS `aggr_selection_0_DocumentChunk` ON (`main`.`documents`.`id` = `aggr_selection_0_DocumentChunk`.`documentId`) WHERE 1=1 ORDER BY `main`.`documents`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET /api/documents 200 in 6ms (compile: 1327µs, render: 5ms)
+ GET / 200 in 35ms (compile: 1703µs, render: 34ms)
+prisma:query SELECT 1
+ GET /api/documents 200 in 10ms (compile: 3ms, render: 7ms)
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt`, COALESCE(`aggr_selection_0_DocumentChunk`.`_aggr_count_chunks`, 0) AS `_aggr_count_chunks` FROM `main`.`documents` LEFT JOIN (SELECT `main`.`document_chunks`.`documentId`, COUNT(*) AS `_aggr_count_chunks` FROM `main`.`document_chunks` WHERE 1=1 GROUP BY `main`.`document_chunks`.`documentId`) AS `aggr_selection_0_DocumentChunk` ON (`main`.`documents`.`id` = `aggr_selection_0_DocumentChunk`.`documentId`) WHERE 1=1 ORDER BY `main`.`documents`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET /api/templates 200 in 8ms (compile: 5ms, render: 3ms)
+prisma:query SELECT `main`.`system_prompts`.`id`, `main`.`system_prompts`.`name`, `main`.`system_prompts`.`content`, `main`.`system_prompts`.`isDefault`, `main`.`system_prompts`.`createdAt`, `main`.`system_prompts`.`updatedAt` FROM `main`.`system_prompts` WHERE 1=1 ORDER BY `main`.`system_prompts`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET /api/system-prompts 200 in 11ms (compile: 7ms, render: 4ms)
+ GET / 200 in 49ms (compile: 3ms, render: 46ms)
+prisma:query SELECT `main`.`system_prompts`.`id`, `main`.`system_prompts`.`name`, `main`.`system_prompts`.`content`, `main`.`system_prompts`.`isDefault`, `main`.`system_prompts`.`createdAt`, `main`.`system_prompts`.`updatedAt` FROM `main`.`system_prompts` WHERE 1=1 ORDER BY `main`.`system_prompts`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET /api/system-prompts 200 in 8ms (compile: 1806µs, render: 6ms)
+ GET /api/documents 200 in 9ms (compile: 4ms, render: 5ms)
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt`, COALESCE(`aggr_selection_0_DocumentChunk`.`_aggr_count_chunks`, 0) AS `_aggr_count_chunks` FROM `main`.`documents` LEFT JOIN (SELECT `main`.`document_chunks`.`documentId`, COUNT(*) AS `_aggr_count_chunks` FROM `main`.`document_chunks` WHERE 1=1 GROUP BY `main`.`document_chunks`.`documentId`) AS `aggr_selection_0_DocumentChunk` ON (`main`.`documents`.`id` = `aggr_selection_0_DocumentChunk`.`documentId`) WHERE 1=1 ORDER BY `main`.`documents`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET /api/templates 200 in 7ms (compile: 4ms, render: 4ms)
+ GET / 200 in 231ms (compile: 52ms, render: 179ms)
+ GET /api/documents 200 in 36ms (compile: 27ms, render: 9ms)
+prisma:query SELECT 1
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt`, COALESCE(`aggr_selection_0_DocumentChunk`.`_aggr_count_chunks`, 0) AS `_aggr_count_chunks` FROM `main`.`documents` LEFT JOIN (SELECT `main`.`document_chunks`.`documentId`, COUNT(*) AS `_aggr_count_chunks` FROM `main`.`document_chunks` WHERE 1=1 GROUP BY `main`.`document_chunks`.`documentId`) AS `aggr_selection_0_DocumentChunk` ON (`main`.`documents`.`id` = `aggr_selection_0_DocumentChunk`.`documentId`) WHERE 1=1 ORDER BY `main`.`documents`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET /api/templates 200 in 20ms (compile: 17ms, render: 3ms)
+prisma:query SELECT `main`.`system_prompts`.`id`, `main`.`system_prompts`.`name`, `main`.`system_prompts`.`content`, `main`.`system_prompts`.`isDefault`, `main`.`system_prompts`.`createdAt`, `main`.`system_prompts`.`updatedAt` FROM `main`.`system_prompts` WHERE 1=1 ORDER BY `main`.`system_prompts`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET /api/system-prompts 200 in 48ms (compile: 38ms, render: 10ms)
+ GET / 200 in 38ms (compile: 1782µs, render: 36ms)
+ GET /api/templates 200 in 6ms (compile: 1723µs, render: 4ms)
+prisma:query SELECT 1
+ GET /api/documents 200 in 6ms (compile: 1936µs, render: 5ms)
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt`, COALESCE(`aggr_selection_0_DocumentChunk`.`_aggr_count_chunks`, 0) AS `_aggr_count_chunks` FROM `main`.`documents` LEFT JOIN (SELECT `main`.`document_chunks`.`documentId`, COUNT(*) AS `_aggr_count_chunks` FROM `main`.`document_chunks` WHERE 1=1 GROUP BY `main`.`document_chunks`.`documentId`) AS `aggr_selection_0_DocumentChunk` ON (`main`.`documents`.`id` = `aggr_selection_0_DocumentChunk`.`documentId`) WHERE 1=1 ORDER BY `main`.`documents`.`createdAt` DESC LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`system_prompts`.`id`, `main`.`system_prompts`.`name`, `main`.`system_prompts`.`content`, `main`.`system_prompts`.`isDefault`, `main`.`system_prompts`.`createdAt`, `main`.`system_prompts`.`updatedAt` FROM `main`.`system_prompts` WHERE 1=1 ORDER BY `main`.`system_prompts`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET /api/system-prompts 200 in 5ms (compile: 1407µs, render: 3ms)
+✓ Compiled in 252ms
+ GET /api/documents 200 in 8ms (compile: 2ms, render: 6ms)
+prisma:query SELECT 1
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt`, COALESCE(`aggr_selection_0_DocumentChunk`.`_aggr_count_chunks`, 0) AS `_aggr_count_chunks` FROM `main`.`documents` LEFT JOIN (SELECT `main`.`document_chunks`.`documentId`, COUNT(*) AS `_aggr_count_chunks` FROM `main`.`document_chunks` WHERE 1=1 GROUP BY `main`.`document_chunks`.`documentId`) AS `aggr_selection_0_DocumentChunk` ON (`main`.`documents`.`id` = `aggr_selection_0_DocumentChunk`.`documentId`) WHERE 1=1 ORDER BY `main`.`documents`.`createdAt` DESC LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`system_prompts`.`id`, `main`.`system_prompts`.`name`, `main`.`system_prompts`.`content`, `main`.`system_prompts`.`isDefault`, `main`.`system_prompts`.`createdAt`, `main`.`system_prompts`.`updatedAt` FROM `main`.`system_prompts` WHERE 1=1 ORDER BY `main`.`system_prompts`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET /api/system-prompts 200 in 12ms (compile: 4ms, render: 8ms)
+prisma:query SELECT 1
+prisma:query INSERT INTO `main`.`conversations` (`id`, `title`, `createdAt`, `updatedAt`) VALUES (?,?,?,?) RETURNING `id` AS `id`, `title` AS `title`, `createdAt` AS `createdAt`, `updatedAt` AS `updatedAt`
+prisma:query INSERT INTO `main`.`messages` (`id`, `conversationId`, `role`, `content`, `tokens`, `createdAt`) VALUES (?,?,?,?,?,?) RETURNING `id` AS `id`, `conversationId` AS `conversationId`, `role` AS `role`, `content` AS `content`, `tokens` AS `tokens`, `createdAt` AS `createdAt`
+prisma:query SELECT `main`.`messages`.`id`, `main`.`messages`.`conversationId`, `main`.`messages`.`role`, `main`.`messages`.`content`, `main`.`messages`.`tokens`, `main`.`messages`.`createdAt` FROM `main`.`messages` WHERE `main`.`messages`.`conversationId` = ? ORDER BY `main`.`messages`.`createdAt` ASC LIMIT ? OFFSET ?
+Multi-agent chat error: ReferenceError: ZAI is not defined
+    at ReasoningAgent.initialize (src/lib/agents/retrieval.ts:279:22)
+    at AgentPipeline.initialize (src/lib/agents/pipeline.ts:45:31)
+    at async getPipeline (src/lib/agents/pipeline.ts:398:5)
+    at async POST (src/app/api/chat/route.ts:48:22)
+  277 |   
+  278 |   async initialize(): Promise<void> {
+> 279 |     this.zai = await ZAI.create()
+      |                      ^
+  280 |   }
+  281 |   
+  282 |   // Chain-of-thought reasoning
+ POST /api/chat 500 in 222ms (compile: 96ms, render: 126ms)
+prisma:query INSERT INTO `main`.`conversations` (`id`, `title`, `createdAt`, `updatedAt`) VALUES (?,?,?,?) RETURNING `id` AS `id`, `title` AS `title`, `createdAt` AS `createdAt`, `updatedAt` AS `updatedAt`
+prisma:query INSERT INTO `main`.`messages` (`id`, `conversationId`, `role`, `content`, `tokens`, `createdAt`) VALUES (?,?,?,?,?,?) RETURNING `id` AS `id`, `conversationId` AS `conversationId`, `role` AS `role`, `content` AS `content`, `tokens` AS `tokens`, `createdAt` AS `createdAt`
+prisma:query SELECT `main`.`messages`.`id`, `main`.`messages`.`conversationId`, `main`.`messages`.`role`, `main`.`messages`.`content`, `main`.`messages`.`tokens`, `main`.`messages`.`createdAt` FROM `main`.`messages` WHERE `main`.`messages`.`conversationId` = ? ORDER BY `main`.`messages`.`createdAt` ASC LIMIT ? OFFSET ?
+Multi-agent chat error: TypeError: Cannot read properties of undefined (reading 'create')
+    at AgentPipeline.execute (src/lib/agents/pipeline.ts:65:40)
+    at POST (src/app/api/chat/route.ts:50:35)
+  63 |     
+  64 |     // Create agent run record
+> 65 |     const agentRun = await db.agentRun.create({
+     |                                        ^
+  66 |       data: {
+  67 |         conversationId: context.conversationId,
+  68 |         status: 'running'
+ POST /api/chat 500 in 75ms (compile: 1635µs, render: 73ms)
+prisma:query SELECT 1
+prisma:query INSERT INTO `main`.`conversations` (`id`, `title`, `createdAt`, `updatedAt`) VALUES (?,?,?,?) RETURNING `id` AS `id`, `title` AS `title`, `createdAt` AS `createdAt`, `updatedAt` AS `updatedAt`
+Multi-agent chat error: TypeError: Cannot read properties of undefined (reading 'create')
+    at POST (src/app/api/chat/route.ts:30:40)
+  28 |
+  29 |     // Create agent run record
+> 30 |     const agentRun = await db.agentRun.create({
+     |                                        ^
+  31 |       data: {
+  32 |         conversationId: conv.id,
+  33 |         status: 'running'
+ POST /api/chat 500 in 158ms (compile: 59ms, render: 100ms)
+ GET / 200 in 197ms (compile: 43ms, render: 154ms)
+prisma:query SELECT 1
+ GET /api/documents 200 in 8ms (compile: 2ms, render: 6ms)
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt`, COALESCE(`aggr_selection_0_DocumentChunk`.`_aggr_count_chunks`, 0) AS `_aggr_count_chunks` FROM `main`.`documents` LEFT JOIN (SELECT `main`.`document_chunks`.`documentId`, COUNT(*) AS `_aggr_count_chunks` FROM `main`.`document_chunks` WHERE 1=1 GROUP BY `main`.`document_chunks`.`documentId`) AS `aggr_selection_0_DocumentChunk` ON (`main`.`documents`.`id` = `aggr_selection_0_DocumentChunk`.`documentId`) WHERE 1=1 ORDER BY `main`.`documents`.`createdAt` DESC LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`system_prompts`.`id`, `main`.`system_prompts`.`name`, `main`.`system_prompts`.`content`, `main`.`system_prompts`.`isDefault`, `main`.`system_prompts`.`createdAt`, `main`.`system_prompts`.`updatedAt` FROM `main`.`system_prompts` WHERE 1=1 ORDER BY `main`.`system_prompts`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET /api/system-prompts 200 in 5ms (compile: 1268µs, render: 4ms)
+prisma:query SELECT 1
+Multi-agent chat error: TypeError: Cannot read properties of undefined (reading 'create')
+    at POST (src/app/api/chat/route.ts:30:40)
+  28 |
+  29 |     // Create agent run record
+> 30 |     const agentRun = await db.agentRun.create({
+     |                                        ^
+  31 |       data: {
+  32 |         conversationId: conv.id,
+  33 |         status: 'running'
+ POST /api/chat 500 in 132ms (compile: 3ms, render: 129ms)
+prisma:query INSERT INTO `main`.`conversations` (`id`, `title`, `createdAt`, `updatedAt`) VALUES (?,?,?,?) RETURNING `id` AS `id`, `title` AS `title`, `createdAt` AS `createdAt`, `updatedAt` AS `updatedAt`
+prisma:query SELECT 1
+prisma:query INSERT INTO `main`.`conversations` (`id`, `title`, `createdAt`, `updatedAt`) VALUES (?,?,?,?) RETURNING `id` AS `id`, `title` AS `title`, `createdAt` AS `createdAt`, `updatedAt` AS `updatedAt`
+Multi-agent chat error: TypeError: Cannot read properties of undefined (reading 'create')
+    at POST (src/app/api/chat/route.ts:30:40)
+  28 |
+  29 |     // Create agent run record
+> 30 |     const agentRun = await db.agentRun.create({
+     |                                        ^
+  31 |       data: {
+  32 |         conversationId: conv.id,
+  33 |         status: 'running'
+ POST /api/chat 500 in 90ms (compile: 3ms, render: 87ms)
+error: script "dev" was terminated by signal SIGTERM (Polite quit request)
+[?25h
