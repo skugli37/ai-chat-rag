@@ -1,0 +1,4 @@
+$ bun --hot index.ts
+AI Chat WebSocket server running on port 3003
+Client connected: 10ekO89TytsAKsiRAAAB
+Client disconnected: 10ekO89TytsAKsiRAAAB

@@ -1,0 +1,72 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Conversation {
+  id        String     @id @default(cuid())
+  title     String?
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  messages  Message[]
+  
+  @@map("conversations")
+}
+
+model Message {
+  id             String       @id @default(cuid())
+  conversationId String
+  role           String       // 'user', 'assistant', 'system'
+  content        String
+  tokens         Int          @default(0)
+  createdAt      DateTime     @default(now())
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  
+  @@index([conversationId])
+  @@map("messages")
+}
+
+model Document {
+  id          String      @id @default(cuid())
+  filename    String
+  content     String
+  fileType    String      // 'txt', 'md', 'pdf', etc.
+  fileSize    Int
+  chunkCount  Int         @default(0)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  chunks      DocumentChunk[]
+  
+  @@map("documents")
+}
+
+model DocumentChunk {
+  id           String   @id @default(cuid())
+  documentId   String
+  content      String
+  chunkIndex   Int
+  embedding    String?  // JSON array of floats
+  createdAt    DateTime @default(now())
+  document     Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  
+  @@index([documentId])
+  @@map("document_chunks")
+}
+
+model SystemPrompt {
+  id        String   @id @default(cuid())
+  name      String
+  content   String
+  isDefault Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@map("system_prompts")
+}

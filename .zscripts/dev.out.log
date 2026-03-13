@@ -1,0 +1,473 @@
+==========================================
+[2026-03-13 21:55:35] Starting: bun install
+==========================================
+[BUN] Installing dependencies...
+[0.33ms] ".env"
+bun install v1.3.10 (30e609e0)
+
++ @tailwindcss/postcss@4.1.18
++ @types/react@19.2.8
++ @types/react-dom@19.2.3
++ bun-types@1.3.6
++ eslint@9.39.2
++ eslint-config-next@16.1.3
++ tailwindcss@4.1.18
++ tw-animate-css@1.4.0
++ typescript@5.9.3
++ @dnd-kit/core@6.3.1
++ @dnd-kit/sortable@10.0.0
++ @dnd-kit/utilities@3.2.2
++ @hookform/resolvers@5.2.2
++ @mdxeditor/editor@3.52.3
++ @prisma/client@6.19.2
++ @radix-ui/react-accordion@1.2.12
++ @radix-ui/react-alert-dialog@1.1.15
++ @radix-ui/react-aspect-ratio@1.1.8
++ @radix-ui/react-avatar@1.1.11
++ @radix-ui/react-checkbox@1.3.3
++ @radix-ui/react-collapsible@1.1.12
++ @radix-ui/react-context-menu@2.2.16
++ @radix-ui/react-dialog@1.1.15
++ @radix-ui/react-dropdown-menu@2.1.16
++ @radix-ui/react-hover-card@1.1.15
++ @radix-ui/react-label@2.1.8
++ @radix-ui/react-menubar@1.1.16
++ @radix-ui/react-navigation-menu@1.2.14
++ @radix-ui/react-popover@1.1.15
++ @radix-ui/react-progress@1.1.8
++ @radix-ui/react-radio-group@1.3.8
++ @radix-ui/react-scroll-area@1.2.10
++ @radix-ui/react-select@2.2.6
++ @radix-ui/react-separator@1.1.8
++ @radix-ui/react-slider@1.3.6
++ @radix-ui/react-slot@1.2.4
++ @radix-ui/react-switch@1.2.6
++ @radix-ui/react-tabs@1.1.13
++ @radix-ui/react-toast@1.2.15
++ @radix-ui/react-toggle@1.1.10
++ @radix-ui/react-toggle-group@1.1.11
++ @radix-ui/react-tooltip@1.2.8
++ @reactuses/core@6.1.9
++ @tanstack/react-query@5.90.19
++ @tanstack/react-table@8.21.3
++ class-variance-authority@0.7.1
++ clsx@2.1.1
++ cmdk@1.1.1
++ date-fns@4.1.0
++ embla-carousel-react@8.6.0
++ framer-motion@12.26.2
++ input-otp@1.4.2
++ lucide-react@0.525.0
++ next@16.1.3
++ next-auth@4.24.13
++ next-intl@4.7.0
++ next-themes@0.4.6
++ prisma@6.19.2
++ react@19.2.3
++ react-day-picker@9.13.0
++ react-dom@19.2.3
++ react-hook-form@7.71.1
++ react-markdown@10.1.0
++ react-resizable-panels@3.0.6
++ react-syntax-highlighter@15.6.6
++ recharts@2.15.4
++ sharp@0.34.5
++ sonner@2.0.7
++ tailwind-merge@3.4.0
++ tailwindcss-animate@1.0.7
++ uuid@11.1.0
++ vaul@1.1.2
++ z-ai-web-dev-sdk@0.0.17
++ zod@4.3.5
++ zustand@5.0.10
+
+827 packages installed [11.64s]
+==========================================
+[2026-03-13 21:55:46] Completed: bun install
+[LOG] Step: bun install | Duration: 11s
+==========================================
+
+==========================================
+[2026-03-13 21:55:47] Starting: bun run db:push
+==========================================
+[BUN] Setting up database...
+$ prisma db push
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+Datasource "db": SQLite database "custom.db" at "file:/home/z/my-project/db/custom.db"
+
+SQLite database custom.db created at file:/home/z/my-project/db/custom.db
+
+🚀  Your database is now in sync with your Prisma schema. Done in 17ms
+
+Running generate... (Use --skip-generate to skip the generators)
+[2K[1A[2K[GRunning generate... - Prisma Client
+[2K[1A[2K[G✔ Generated Prisma Client (v6.19.2) to ./node_modules/@prisma/client in 77ms
+┌─────────────────────────────────────────────────────────┐
+│  Update available 6.19.2 -> 7.5.0                       │
+│                                                         │
+│  This is a major update - please follow the guide at    │
+│  https://pris.ly/d/major-version-upgrade                │
+│                                                         │
+│  Run the following to update                            │
+│    npm i --save-dev prisma@latest                       │
+│    npm i @prisma/client@latest                          │
+└─────────────────────────────────────────────────────────┘
+
+==========================================
+[2026-03-13 21:55:48] Completed: bun run db:push
+[LOG] Step: bun run db:push | Duration: 1s
+==========================================
+
+==========================================
+[2026-03-13 21:55:48] Starting: Starting Next.js dev server
+==========================================
+[BUN] Starting development server...
+==========================================
+$ next dev -p 3000 2>&1 | tee dev.log
+[2026-03-13 21:55:48] Completed: Starting Next.js dev server
+[LOG] Step: Starting Next.js dev server | Duration: 0s
+==========================================
+
+==========================================
+[2026-03-13 21:55:48] Starting: Waiting for Next.js dev server
+==========================================
+Waiting for Next.js dev server to be ready on localhost:3000...
+Attempt 1/60: Next.js dev server not ready yet, waiting...
+▲ Next.js 16.1.3 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://21.0.13.11:3000
+- Environments: .env
+
+✓ Starting...
+Attention: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
+
+
+  We detected TypeScript in your project and reconfigured your tsconfig.json file for you.
+  The following suggested values were added to your tsconfig.json. These values can be changed to fit your project's needs:
+
+  	- include was updated to add '.next/dev/types/**/*.ts'
+
+  The following mandatory changes were made to your tsconfig.json:
+
+  	- jsx was set to react-jsx (next.js uses the React automatic runtime)
+
+✓ Ready in 914ms
+Next.js dev server is ready!
+ GET / 200 in 3.1s (compile: 2.9s, render: 132ms)
+==========================================
+ GET / 200 in 2.2s (compile: 1948ms, render: 205ms)
+[2026-03-13 21:55:52] Completed: Waiting for Next.js dev server
+[LOG] Step: Waiting for Next.js dev server | Duration: 4s
+==========================================
+
+==========================================
+[2026-03-13 21:55:52] Starting: Health check
+==========================================
+[BUN] Performing health check...
+ GET / 200 in 21ms (compile: 1952µs, render: 19ms)
+[BUN] Health check passed
+==========================================
+[2026-03-13 21:55:52] Completed: Health check
+[LOG] Step: Health check | Duration: 0s
+==========================================
+
+==========================================
+[2026-03-13 21:55:52] Starting: Starting mini-services
+==========================================
+Found mini-services directory, scanning for sub-services...
+Mini-services startup completed. Started 0 service(s).
+==========================================
+[2026-03-13 21:55:52] Completed: Starting mini-services
+[LOG] Step: Starting mini-services | Duration: 0s
+==========================================
+
+Next.js dev server is running in background (PID: 372).
+Use 'kill 372' to stop it.
+✓ Compiled in 389ms
+ GET / 200 in 168ms (compile: 41ms, render: 127ms)
+ GET / 200 in 53ms (compile: 4ms, render: 50ms)
+✓ Compiled in 155ms
+ GET / 200 in 72ms (compile: 32ms, render: 39ms)
+ GET / 200 in 14ms (compile: 2ms, render: 12ms)
+ GET / 200 in 19ms (compile: 3ms, render: 16ms)
+ GET / 200 in 12ms (compile: 1941µs, render: 10ms)
+ GET / 200 in 17ms (compile: 2ms, render: 15ms)
+ GET / 200 in 12ms (compile: 1823µs, render: 10ms)
+ GET / 200 in 17ms (compile: 1990µs, render: 15ms)
+ GET / 200 in 20ms (compile: 2ms, render: 18ms)
+ GET / 200 in 52ms (compile: 31ms, render: 21ms)
+ GET / 200 in 19ms (compile: 1997µs, render: 17ms)
+ GET / 200 in 14ms (compile: 1969µs, render: 12ms)
+ GET / 200 in 12ms (compile: 1813µs, render: 10ms)
+ GET / 200 in 14ms (compile: 1900µs, render: 12ms)
+ GET / 200 in 16ms (compile: 1861µs, render: 14ms)
+ GET / 200 in 14ms (compile: 1891µs, render: 12ms)
+ GET / 200 in 15ms (compile: 1861µs, render: 13ms)
+ GET / 200 in 32ms (compile: 3ms, render: 29ms)
+ GET / 200 in 13ms (compile: 2ms, render: 11ms)
+ GET / 200 in 41ms (compile: 26ms, render: 15ms)
+ GET / 200 in 98ms (compile: 3ms, render: 96ms)
+⨯ ./src/app/page.tsx:4:1
+Module not found: Can't resolve 'socket.io-client'
+[0m [90m 2 |[39m
+ [90m 3 |[39m [36mimport[39m { useState[33m,[39m useEffect[33m,[39m useRef[33m,[39m useCallback } [36mfrom[39m [32m'react'[39m
+[31m[1m>[22m[39m[90m 4 |[39m [36mimport[39m { io[33m,[39m [33mSocket[39m } [36mfrom[39m [32m'socket.io-client'[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 5 |[39m [36mimport[39m { [33mCard[39m[33m,[39m [33mCardContent[39m[33m,[39m [33mCardHeader[39m[33m,[39m [33mCardTitle[39m } [36mfrom[39m [32m'@/components/ui/card'[39m
+ [90m 6 |[39m [36mimport[39m { [33mButton[39m } [36mfrom[39m [32m'@/components/ui/button'[39m
+ [90m 7 |[39m [36mimport[39m { [33mInput[39m } [36mfrom[39m [32m'@/components/ui/input'[39m[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/page.tsx:4:1
+Module not found: Can't resolve 'socket.io-client'
+[0m [90m 2 |[39m
+ [90m 3 |[39m [36mimport[39m { useState[33m,[39m useEffect[33m,[39m useRef[33m,[39m useCallback } [36mfrom[39m [32m'react'[39m
+[31m[1m>[22m[39m[90m 4 |[39m [36mimport[39m { io[33m,[39m [33mSocket[39m } [36mfrom[39m [32m'socket.io-client'[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 5 |[39m [36mimport[39m { [33mCard[39m[33m,[39m [33mCardContent[39m[33m,[39m [33mCardHeader[39m[33m,[39m [33mCardTitle[39m } [36mfrom[39m [32m'@/components/ui/card'[39m
+ [90m 6 |[39m [36mimport[39m { [33mButton[39m } [36mfrom[39m [32m'@/components/ui/button'[39m
+ [90m 7 |[39m [36mimport[39m { [33mInput[39m } [36mfrom[39m [32m'@/components/ui/input'[39m[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/page.tsx:4:1
+Module not found: Can't resolve 'socket.io-client'
+[0m [90m 2 |[39m
+ [90m 3 |[39m [36mimport[39m { useState[33m,[39m useEffect[33m,[39m useRef[33m,[39m useCallback } [36mfrom[39m [32m'react'[39m
+[31m[1m>[22m[39m[90m 4 |[39m [36mimport[39m { io[33m,[39m [33mSocket[39m } [36mfrom[39m [32m'socket.io-client'[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 5 |[39m [36mimport[39m { [33mCard[39m[33m,[39m [33mCardContent[39m[33m,[39m [33mCardHeader[39m[33m,[39m [33mCardTitle[39m } [36mfrom[39m [32m'@/components/ui/card'[39m
+ [90m 6 |[39m [36mimport[39m { [33mButton[39m } [36mfrom[39m [32m'@/components/ui/button'[39m
+ [90m 7 |[39m [36mimport[39m { [33mInput[39m } [36mfrom[39m [32m'@/components/ui/input'[39m[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/page.tsx:4:1
+Module not found: Can't resolve 'socket.io-client'
+[0m [90m 2 |[39m
+ [90m 3 |[39m [36mimport[39m { useState[33m,[39m useEffect[33m,[39m useRef[33m,[39m useCallback } [36mfrom[39m [32m'react'[39m
+[31m[1m>[22m[39m[90m 4 |[39m [36mimport[39m { io[33m,[39m [33mSocket[39m } [36mfrom[39m [32m'socket.io-client'[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 5 |[39m [36mimport[39m { [33mCard[39m[33m,[39m [33mCardContent[39m[33m,[39m [33mCardHeader[39m[33m,[39m [33mCardTitle[39m } [36mfrom[39m [32m'@/components/ui/card'[39m
+ [90m 6 |[39m [36mimport[39m { [33mButton[39m } [36mfrom[39m [32m'@/components/ui/button'[39m
+ [90m 7 |[39m [36mimport[39m { [33mInput[39m } [36mfrom[39m [32m'@/components/ui/input'[39m[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+✓ Compiled in 673ms
+ GET / 200 in 299ms (compile: 151ms, render: 148ms)
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt`, COALESCE(`aggr_selection_0_DocumentChunk`.`_aggr_count_chunks`, 0) AS `_aggr_count_chunks` FROM `main`.`documents` LEFT JOIN (SELECT `main`.`document_chunks`.`documentId`, COUNT(*) AS `_aggr_count_chunks` FROM `main`.`document_chunks` WHERE 1=1 GROUP BY `main`.`document_chunks`.`documentId`) AS `aggr_selection_0_DocumentChunk` ON (`main`.`documents`.`id` = `aggr_selection_0_DocumentChunk`.`documentId`) WHERE 1=1 ORDER BY `main`.`documents`.`createdAt` DESC LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`system_prompts`.`id`, `main`.`system_prompts`.`name`, `main`.`system_prompts`.`content`, `main`.`system_prompts`.`isDefault`, `main`.`system_prompts`.`createdAt`, `main`.`system_prompts`.`updatedAt` FROM `main`.`system_prompts` WHERE 1=1 ORDER BY `main`.`system_prompts`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET /api/documents 200 in 408ms (compile: 348ms, render: 60ms)
+prisma:query INSERT INTO `main`.`system_prompts` (`id`, `name`, `content`, `isDefault`, `createdAt`, `updatedAt`) VALUES (?,?,?,?,?,?) RETURNING `id` AS `id`, `name` AS `name`, `content` AS `content`, `isDefault` AS `isDefault`, `createdAt` AS `createdAt`, `updatedAt` AS `updatedAt`
+ GET /api/system-prompts 200 in 405ms (compile: 375ms, render: 30ms)
+ GET / 200 in 44ms (compile: 9ms, render: 35ms)
+ GET / 200 in 156ms (compile: 44ms, render: 112ms)
+ GET /api/documents 200 in 9ms (compile: 2ms, render: 6ms)
+prisma:query SELECT 1
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt`, COALESCE(`aggr_selection_0_DocumentChunk`.`_aggr_count_chunks`, 0) AS `_aggr_count_chunks` FROM `main`.`documents` LEFT JOIN (SELECT `main`.`document_chunks`.`documentId`, COUNT(*) AS `_aggr_count_chunks` FROM `main`.`document_chunks` WHERE 1=1 GROUP BY `main`.`document_chunks`.`documentId`) AS `aggr_selection_0_DocumentChunk` ON (`main`.`documents`.`id` = `aggr_selection_0_DocumentChunk`.`documentId`) WHERE 1=1 ORDER BY `main`.`documents`.`createdAt` DESC LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`system_prompts`.`id`, `main`.`system_prompts`.`name`, `main`.`system_prompts`.`content`, `main`.`system_prompts`.`isDefault`, `main`.`system_prompts`.`createdAt`, `main`.`system_prompts`.`updatedAt` FROM `main`.`system_prompts` WHERE 1=1 ORDER BY `main`.`system_prompts`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET /api/system-prompts 200 in 6ms (compile: 1645µs, render: 5ms)
+ GET / 200 in 35ms (compile: 5ms, render: 30ms)
+prisma:query SELECT `main`.`system_prompts`.`id`, `main`.`system_prompts`.`name`, `main`.`system_prompts`.`content`, `main`.`system_prompts`.`isDefault`, `main`.`system_prompts`.`createdAt`, `main`.`system_prompts`.`updatedAt` FROM `main`.`system_prompts` WHERE 1=1 ORDER BY `main`.`system_prompts`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET /api/system-prompts 200 in 8ms (compile: 1982µs, render: 6ms)
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt`, COALESCE(`aggr_selection_0_DocumentChunk`.`_aggr_count_chunks`, 0) AS `_aggr_count_chunks` FROM `main`.`documents` LEFT JOIN (SELECT `main`.`document_chunks`.`documentId`, COUNT(*) AS `_aggr_count_chunks` FROM `main`.`document_chunks` WHERE 1=1 GROUP BY `main`.`document_chunks`.`documentId`) AS `aggr_selection_0_DocumentChunk` ON (`main`.`documents`.`id` = `aggr_selection_0_DocumentChunk`.`documentId`) WHERE 1=1 ORDER BY `main`.`documents`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET /api/documents 200 in 6ms (compile: 1170µs, render: 5ms)
+ GET / 200 in 42ms (compile: 9ms, render: 33ms)
+ GET /api/documents 200 in 8ms (compile: 2ms, render: 6ms)
+prisma:query SELECT 1
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt`, COALESCE(`aggr_selection_0_DocumentChunk`.`_aggr_count_chunks`, 0) AS `_aggr_count_chunks` FROM `main`.`documents` LEFT JOIN (SELECT `main`.`document_chunks`.`documentId`, COUNT(*) AS `_aggr_count_chunks` FROM `main`.`document_chunks` WHERE 1=1 GROUP BY `main`.`document_chunks`.`documentId`) AS `aggr_selection_0_DocumentChunk` ON (`main`.`documents`.`id` = `aggr_selection_0_DocumentChunk`.`documentId`) WHERE 1=1 ORDER BY `main`.`documents`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET /api/system-prompts 200 in 9ms (compile: 1491µs, render: 7ms)
+prisma:query SELECT `main`.`system_prompts`.`id`, `main`.`system_prompts`.`name`, `main`.`system_prompts`.`content`, `main`.`system_prompts`.`isDefault`, `main`.`system_prompts`.`createdAt`, `main`.`system_prompts`.`updatedAt` FROM `main`.`system_prompts` WHERE 1=1 ORDER BY `main`.`system_prompts`.`createdAt` DESC LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`system_prompts`.`id`, `main`.`system_prompts`.`name`, `main`.`system_prompts`.`content`, `main`.`system_prompts`.`isDefault`, `main`.`system_prompts`.`createdAt`, `main`.`system_prompts`.`updatedAt` FROM `main`.`system_prompts` WHERE 1=1 ORDER BY `main`.`system_prompts`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET /api/system-prompts 200 in 8ms (compile: 2ms, render: 6ms)
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt`, COALESCE(`aggr_selection_0_DocumentChunk`.`_aggr_count_chunks`, 0) AS `_aggr_count_chunks` FROM `main`.`documents` LEFT JOIN (SELECT `main`.`document_chunks`.`documentId`, COUNT(*) AS `_aggr_count_chunks` FROM `main`.`document_chunks` WHERE 1=1 GROUP BY `main`.`document_chunks`.`documentId`) AS `aggr_selection_0_DocumentChunk` ON (`main`.`documents`.`id` = `aggr_selection_0_DocumentChunk`.`documentId`) WHERE 1=1 ORDER BY `main`.`documents`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET /api/documents 200 in 7ms (compile: 1768µs, render: 6ms)
+Error uploading document: TypeError: Content-Type was not one of "multipart/form-data" or "application/x-www-form-urlencoded".
+    at ignore-listed frames
+ POST /api/documents 500 in 12ms (compile: 2ms, render: 10ms)
+ GET / 200 in 37ms (compile: 7ms, render: 30ms)
+prisma:query SELECT 1
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt`, COALESCE(`aggr_selection_0_DocumentChunk`.`_aggr_count_chunks`, 0) AS `_aggr_count_chunks` FROM `main`.`documents` LEFT JOIN (SELECT `main`.`document_chunks`.`documentId`, COUNT(*) AS `_aggr_count_chunks` FROM `main`.`document_chunks` WHERE 1=1 GROUP BY `main`.`document_chunks`.`documentId`) AS `aggr_selection_0_DocumentChunk` ON (`main`.`documents`.`id` = `aggr_selection_0_DocumentChunk`.`documentId`) WHERE 1=1 ORDER BY `main`.`documents`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET /api/documents 200 in 7ms (compile: 1835µs, render: 5ms)
+prisma:query SELECT `main`.`system_prompts`.`id`, `main`.`system_prompts`.`name`, `main`.`system_prompts`.`content`, `main`.`system_prompts`.`isDefault`, `main`.`system_prompts`.`createdAt`, `main`.`system_prompts`.`updatedAt` FROM `main`.`system_prompts` WHERE 1=1 ORDER BY `main`.`system_prompts`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET /api/system-prompts 200 in 4ms (compile: 1167µs, render: 3ms)
+prisma:query BEGIN IMMEDIATE
+prisma:query INSERT INTO `main`.`documents` (`id`, `filename`, `content`, `fileType`, `fileSize`, `chunkCount`, `createdAt`, `updatedAt`) VALUES (?,?,?,?,?,?,?,?) RETURNING `id` AS `id`
+prisma:query INSERT INTO `main`.`document_chunks` (`id`, `documentId`, `content`, `chunkIndex`, `createdAt`) VALUES (?,?,?,?,?) RETURNING `id` AS `id`
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt` FROM `main`.`documents` WHERE `main`.`documents`.`id` = ? LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`document_chunks`.`id`, `main`.`document_chunks`.`documentId`, `main`.`document_chunks`.`content`, `main`.`document_chunks`.`chunkIndex`, `main`.`document_chunks`.`embedding`, `main`.`document_chunks`.`createdAt` FROM `main`.`document_chunks` WHERE `main`.`document_chunks`.`documentId` IN (?) LIMIT ? OFFSET ?
+prisma:query COMMIT
+ POST /api/documents 200 in 40ms (compile: 30ms, render: 10ms)
+ GET /api/documents 200 in 8ms (compile: 1540µs, render: 6ms)
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt`, COALESCE(`aggr_selection_0_DocumentChunk`.`_aggr_count_chunks`, 0) AS `_aggr_count_chunks` FROM `main`.`documents` LEFT JOIN (SELECT `main`.`document_chunks`.`documentId`, COUNT(*) AS `_aggr_count_chunks` FROM `main`.`document_chunks` WHERE 1=1 GROUP BY `main`.`document_chunks`.`documentId`) AS `aggr_selection_0_DocumentChunk` ON (`main`.`documents`.`id` = `aggr_selection_0_DocumentChunk`.`documentId`) WHERE 1=1 ORDER BY `main`.`documents`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET /api/conversations 404 in 480ms (compile: 395ms, render: 85ms)
+ GET / 200 in 46ms (compile: 13ms, render: 33ms)
+prisma:query SELECT 1
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt`, COALESCE(`aggr_selection_0_DocumentChunk`.`_aggr_count_chunks`, 0) AS `_aggr_count_chunks` FROM `main`.`documents` LEFT JOIN (SELECT `main`.`document_chunks`.`documentId`, COUNT(*) AS `_aggr_count_chunks` FROM `main`.`document_chunks` WHERE 1=1 GROUP BY `main`.`document_chunks`.`documentId`) AS `aggr_selection_0_DocumentChunk` ON (`main`.`documents`.`id` = `aggr_selection_0_DocumentChunk`.`documentId`) WHERE 1=1 ORDER BY `main`.`documents`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET /api/documents 200 in 10ms (compile: 2ms, render: 8ms)
+prisma:query SELECT `main`.`system_prompts`.`id`, `main`.`system_prompts`.`name`, `main`.`system_prompts`.`content`, `main`.`system_prompts`.`isDefault`, `main`.`system_prompts`.`createdAt`, `main`.`system_prompts`.`updatedAt` FROM `main`.`system_prompts` WHERE 1=1 ORDER BY `main`.`system_prompts`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET /api/system-prompts 200 in 6ms (compile: 1306µs, render: 5ms)
+ GET / 200 in 44ms (compile: 10ms, render: 34ms)
+prisma:query SELECT 1
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt`, COALESCE(`aggr_selection_0_DocumentChunk`.`_aggr_count_chunks`, 0) AS `_aggr_count_chunks` FROM `main`.`documents` LEFT JOIN (SELECT `main`.`document_chunks`.`documentId`, COUNT(*) AS `_aggr_count_chunks` FROM `main`.`document_chunks` WHERE 1=1 GROUP BY `main`.`document_chunks`.`documentId`) AS `aggr_selection_0_DocumentChunk` ON (`main`.`documents`.`id` = `aggr_selection_0_DocumentChunk`.`documentId`) WHERE 1=1 ORDER BY `main`.`documents`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET /api/documents 200 in 7ms (compile: 1772µs, render: 5ms)
+prisma:query SELECT `main`.`system_prompts`.`id`, `main`.`system_prompts`.`name`, `main`.`system_prompts`.`content`, `main`.`system_prompts`.`isDefault`, `main`.`system_prompts`.`createdAt`, `main`.`system_prompts`.`updatedAt` FROM `main`.`system_prompts` WHERE 1=1 ORDER BY `main`.`system_prompts`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET /api/system-prompts 200 in 4ms (compile: 1079µs, render: 3ms)
+⚠ Cross origin request detected from preview-chat-ffc732f6-8e44-48e5-9cd6-23ac8131e7cf.space.z.ai to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+ GET / 200 in 31ms (compile: 3ms, render: 28ms)
+prisma:query SELECT 1
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt`, COALESCE(`aggr_selection_0_DocumentChunk`.`_aggr_count_chunks`, 0) AS `_aggr_count_chunks` FROM `main`.`documents` LEFT JOIN (SELECT `main`.`document_chunks`.`documentId`, COUNT(*) AS `_aggr_count_chunks` FROM `main`.`document_chunks` WHERE 1=1 GROUP BY `main`.`document_chunks`.`documentId`) AS `aggr_selection_0_DocumentChunk` ON (`main`.`documents`.`id` = `aggr_selection_0_DocumentChunk`.`documentId`) WHERE 1=1 ORDER BY `main`.`documents`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET /api/documents 200 in 7ms (compile: 1941µs, render: 5ms)
+prisma:query SELECT `main`.`system_prompts`.`id`, `main`.`system_prompts`.`name`, `main`.`system_prompts`.`content`, `main`.`system_prompts`.`isDefault`, `main`.`system_prompts`.`createdAt`, `main`.`system_prompts`.`updatedAt` FROM `main`.`system_prompts` WHERE 1=1 ORDER BY `main`.`system_prompts`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET /api/system-prompts 200 in 5ms (compile: 1514µs, render: 4ms)
+✓ Compiled in 111ms
+prisma:query SELECT 1
+ GET /api/system-prompts 200 in 7ms (compile: 2ms, render: 5ms)
+prisma:query SELECT `main`.`system_prompts`.`id`, `main`.`system_prompts`.`name`, `main`.`system_prompts`.`content`, `main`.`system_prompts`.`isDefault`, `main`.`system_prompts`.`createdAt`, `main`.`system_prompts`.`updatedAt` FROM `main`.`system_prompts` WHERE 1=1 ORDER BY `main`.`system_prompts`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET /api/documents 200 in 7ms (compile: 1338µs, render: 6ms)
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt`, COALESCE(`aggr_selection_0_DocumentChunk`.`_aggr_count_chunks`, 0) AS `_aggr_count_chunks` FROM `main`.`documents` LEFT JOIN (SELECT `main`.`document_chunks`.`documentId`, COUNT(*) AS `_aggr_count_chunks` FROM `main`.`document_chunks` WHERE 1=1 GROUP BY `main`.`document_chunks`.`documentId`) AS `aggr_selection_0_DocumentChunk` ON (`main`.`documents`.`id` = `aggr_selection_0_DocumentChunk`.`documentId`) WHERE 1=1 ORDER BY `main`.`documents`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET / 200 in 79ms (compile: 46ms, render: 33ms)
+ GET / 200 in 13ms (compile: 3ms, render: 11ms)
+ GET / 200 in 20ms (compile: 4ms, render: 15ms)
+ GET / 200 in 23ms (compile: 6ms, render: 17ms)
+ GET / 200 in 22ms (compile: 5ms, render: 16ms)
+ GET / 200 in 23ms (compile: 7ms, render: 16ms)
+ GET / 200 in 13ms (compile: 3ms, render: 10ms)
+ GET / 200 in 14ms (compile: 3ms, render: 11ms)
+ GET / 200 in 14ms (compile: 3ms, render: 11ms)
+ GET / 200 in 15ms (compile: 3ms, render: 12ms)
+ GET / 200 in 15ms (compile: 3ms, render: 12ms)
+ GET / 200 in 14ms (compile: 3ms, render: 11ms)
+ GET / 200 in 13ms (compile: 3ms, render: 10ms)
+ GET / 200 in 31ms (compile: 3ms, render: 27ms)
+✓ Compiled in 146ms
+ GET / 200 in 87ms (compile: 56ms, render: 31ms)
+prisma:query SELECT 1
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt`, COALESCE(`aggr_selection_0_DocumentChunk`.`_aggr_count_chunks`, 0) AS `_aggr_count_chunks` FROM `main`.`documents` LEFT JOIN (SELECT `main`.`document_chunks`.`documentId`, COUNT(*) AS `_aggr_count_chunks` FROM `main`.`document_chunks` WHERE 1=1 GROUP BY `main`.`document_chunks`.`documentId`) AS `aggr_selection_0_DocumentChunk` ON (`main`.`documents`.`id` = `aggr_selection_0_DocumentChunk`.`documentId`) WHERE 1=1 ORDER BY `main`.`documents`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET /api/documents 200 in 47ms (compile: 33ms, render: 14ms)
+prisma:query SELECT `main`.`system_prompts`.`id`, `main`.`system_prompts`.`name`, `main`.`system_prompts`.`content`, `main`.`system_prompts`.`isDefault`, `main`.`system_prompts`.`createdAt`, `main`.`system_prompts`.`updatedAt` FROM `main`.`system_prompts` WHERE 1=1 ORDER BY `main`.`system_prompts`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET /api/system-prompts 200 in 33ms (compile: 19ms, render: 14ms)
+ GET /api/conversations/list 404 in 116ms (compile: 37ms, render: 79ms)
+ GET / 200 in 96ms (compile: 49ms, render: 47ms)
+ GET / 200 in 13ms (compile: 1702µs, render: 11ms)
+ GET / 200 in 14ms (compile: 3ms, render: 12ms)
+ GET / 200 in 12ms (compile: 1828µs, render: 11ms)
+ GET / 200 in 12ms (compile: 1551µs, render: 10ms)
+ GET / 200 in 14ms (compile: 1695µs, render: 12ms)
+ GET / 200 in 13ms (compile: 1897µs, render: 11ms)
+ GET / 200 in 13ms (compile: 1966µs, render: 11ms)
+ GET / 200 in 18ms (compile: 2ms, render: 16ms)
+ GET / 200 in 17ms (compile: 2ms, render: 15ms)
+ GET / 200 in 17ms (compile: 2ms, render: 14ms)
+ GET / 200 in 22ms (compile: 2ms, render: 19ms)
+ GET / 200 in 24ms (compile: 3ms, render: 21ms)
+ GET / 200 in 22ms (compile: 3ms, render: 19ms)
+ GET / 200 in 24ms (compile: 3ms, render: 21ms)
+ GET / 200 in 19ms (compile: 3ms, render: 17ms)
+ GET /api/documents 200 in 50ms (compile: 38ms, render: 12ms)
+prisma:query SELECT 1
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt`, COALESCE(`aggr_selection_0_DocumentChunk`.`_aggr_count_chunks`, 0) AS `_aggr_count_chunks` FROM `main`.`documents` LEFT JOIN (SELECT `main`.`document_chunks`.`documentId`, COUNT(*) AS `_aggr_count_chunks` FROM `main`.`document_chunks` WHERE 1=1 GROUP BY `main`.`document_chunks`.`documentId`) AS `aggr_selection_0_DocumentChunk` ON (`main`.`documents`.`id` = `aggr_selection_0_DocumentChunk`.`documentId`) WHERE 1=1 ORDER BY `main`.`documents`.`createdAt` DESC LIMIT ? OFFSET ?
+prisma:query INSERT INTO `main`.`conversations` (`id`, `title`, `createdAt`, `updatedAt`) VALUES (?,?,?,?) RETURNING `id` AS `id`, `title` AS `title`, `createdAt` AS `createdAt`, `updatedAt` AS `updatedAt`
+prisma:query INSERT INTO `main`.`messages` (`id`, `conversationId`, `role`, `content`, `tokens`, `createdAt`) VALUES (?,?,?,?,?,?) RETURNING `id` AS `id`, `conversationId` AS `conversationId`, `role` AS `role`, `content` AS `content`, `tokens` AS `tokens`, `createdAt` AS `createdAt`
+prisma:query SELECT `main`.`messages`.`id`, `main`.`messages`.`conversationId`, `main`.`messages`.`role`, `main`.`messages`.`content`, `main`.`messages`.`tokens`, `main`.`messages`.`createdAt` FROM `main`.`messages` WHERE `main`.`messages`.`conversationId` = ? ORDER BY `main`.`messages`.`createdAt` ASC LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`document_chunks`.`id`, `main`.`document_chunks`.`documentId`, `main`.`document_chunks`.`content`, `main`.`document_chunks`.`chunkIndex`, `main`.`document_chunks`.`embedding`, `main`.`document_chunks`.`createdAt` FROM `main`.`document_chunks` WHERE 1=1 LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt` FROM `main`.`documents` WHERE `main`.`documents`.`id` IN (?) LIMIT ? OFFSET ?
+prisma:query INSERT INTO `main`.`messages` (`id`, `conversationId`, `role`, `content`, `tokens`, `createdAt`) VALUES (?,?,?,?,?,?) RETURNING `id` AS `id`, `conversationId` AS `conversationId`, `role` AS `role`, `content` AS `content`, `tokens` AS `tokens`, `createdAt` AS `createdAt`
+prisma:query UPDATE `main`.`conversations` SET `updatedAt` = ? WHERE (`main`.`conversations`.`id` = ? AND 1=1) RETURNING `id` AS `id`, `title` AS `title`, `createdAt` AS `createdAt`, `updatedAt` AS `updatedAt`
+ POST /api/chat 200 in 3.1s (compile: 113ms, render: 3.0s)
+ GET / 200 in 139ms (compile: 1843µs, render: 137ms)
+prisma:query SELECT 1
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt`, COALESCE(`aggr_selection_0_DocumentChunk`.`_aggr_count_chunks`, 0) AS `_aggr_count_chunks` FROM `main`.`documents` LEFT JOIN (SELECT `main`.`document_chunks`.`documentId`, COUNT(*) AS `_aggr_count_chunks` FROM `main`.`document_chunks` WHERE 1=1 GROUP BY `main`.`document_chunks`.`documentId`) AS `aggr_selection_0_DocumentChunk` ON (`main`.`documents`.`id` = `aggr_selection_0_DocumentChunk`.`documentId`) WHERE 1=1 ORDER BY `main`.`documents`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET /api/documents 200 in 9ms (compile: 2ms, render: 7ms)
+prisma:query SELECT `main`.`system_prompts`.`id`, `main`.`system_prompts`.`name`, `main`.`system_prompts`.`content`, `main`.`system_prompts`.`isDefault`, `main`.`system_prompts`.`createdAt`, `main`.`system_prompts`.`updatedAt` FROM `main`.`system_prompts` WHERE 1=1 ORDER BY `main`.`system_prompts`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET /api/system-prompts 200 in 33ms (compile: 26ms, render: 7ms)
+ GET /api/conversations/list 200 in 99ms (compile: 91ms, render: 8ms)
+prisma:query SELECT `main`.`conversations`.`id`, `main`.`conversations`.`title`, `main`.`conversations`.`createdAt`, `main`.`conversations`.`updatedAt` FROM `main`.`conversations` WHERE 1=1 ORDER BY `main`.`conversations`.`updatedAt` DESC LIMIT ? OFFSET ?
+ GET / 200 in 35ms (compile: 2ms, render: 33ms)
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt`, COALESCE(`aggr_selection_0_DocumentChunk`.`_aggr_count_chunks`, 0) AS `_aggr_count_chunks` FROM `main`.`documents` LEFT JOIN (SELECT `main`.`document_chunks`.`documentId`, COUNT(*) AS `_aggr_count_chunks` FROM `main`.`document_chunks` WHERE 1=1 GROUP BY `main`.`document_chunks`.`documentId`) AS `aggr_selection_0_DocumentChunk` ON (`main`.`documents`.`id` = `aggr_selection_0_DocumentChunk`.`documentId`) WHERE 1=1 ORDER BY `main`.`documents`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET /api/documents 200 in 10ms (compile: 2ms, render: 8ms)
+prisma:query SELECT `main`.`system_prompts`.`id`, `main`.`system_prompts`.`name`, `main`.`system_prompts`.`content`, `main`.`system_prompts`.`isDefault`, `main`.`system_prompts`.`createdAt`, `main`.`system_prompts`.`updatedAt` FROM `main`.`system_prompts` WHERE 1=1 ORDER BY `main`.`system_prompts`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET /api/system-prompts 200 in 11ms (compile: 5ms, render: 5ms)
+prisma:query SELECT `main`.`conversations`.`id`, `main`.`conversations`.`title`, `main`.`conversations`.`createdAt`, `main`.`conversations`.`updatedAt` FROM `main`.`conversations` WHERE 1=1 ORDER BY `main`.`conversations`.`updatedAt` DESC LIMIT ? OFFSET ?
+ GET /api/conversations/list 200 in 4ms (compile: 1568µs, render: 3ms)
+prisma:query INSERT INTO `main`.`conversations` (`id`, `title`, `createdAt`, `updatedAt`) VALUES (?,?,?,?) RETURNING `id` AS `id`, `title` AS `title`, `createdAt` AS `createdAt`, `updatedAt` AS `updatedAt`
+prisma:query INSERT INTO `main`.`messages` (`id`, `conversationId`, `role`, `content`, `tokens`, `createdAt`) VALUES (?,?,?,?,?,?) RETURNING `id` AS `id`, `conversationId` AS `conversationId`, `role` AS `role`, `content` AS `content`, `tokens` AS `tokens`, `createdAt` AS `createdAt`
+prisma:query SELECT `main`.`messages`.`id`, `main`.`messages`.`conversationId`, `main`.`messages`.`role`, `main`.`messages`.`content`, `main`.`messages`.`tokens`, `main`.`messages`.`createdAt` FROM `main`.`messages` WHERE `main`.`messages`.`conversationId` = ? ORDER BY `main`.`messages`.`createdAt` ASC LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`document_chunks`.`id`, `main`.`document_chunks`.`documentId`, `main`.`document_chunks`.`content`, `main`.`document_chunks`.`chunkIndex`, `main`.`document_chunks`.`embedding`, `main`.`document_chunks`.`createdAt` FROM `main`.`document_chunks` WHERE 1=1 LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt` FROM `main`.`documents` WHERE `main`.`documents`.`id` IN (?) LIMIT ? OFFSET ?
+prisma:query INSERT INTO `main`.`messages` (`id`, `conversationId`, `role`, `content`, `tokens`, `createdAt`) VALUES (?,?,?,?,?,?) RETURNING `id` AS `id`, `conversationId` AS `conversationId`, `role` AS `role`, `content` AS `content`, `tokens` AS `tokens`, `createdAt` AS `createdAt`
+prisma:query UPDATE `main`.`conversations` SET `updatedAt` = ? WHERE (`main`.`conversations`.`id` = ? AND 1=1) RETURNING `id` AS `id`, `title` AS `title`, `createdAt` AS `createdAt`, `updatedAt` AS `updatedAt`
+ POST /api/chat 200 in 1194ms (compile: 1906µs, render: 1192ms)
+prisma:query SELECT 1
+prisma:query SELECT `main`.`conversations`.`id`, `main`.`conversations`.`title`, `main`.`conversations`.`createdAt`, `main`.`conversations`.`updatedAt` FROM `main`.`conversations` WHERE (`main`.`conversations`.`id` = ? AND 1=1) LIMIT ? OFFSET ?
+prisma:query INSERT INTO `main`.`messages` (`id`, `conversationId`, `role`, `content`, `tokens`, `createdAt`) VALUES (?,?,?,?,?,?) RETURNING `id` AS `id`, `conversationId` AS `conversationId`, `role` AS `role`, `content` AS `content`, `tokens` AS `tokens`, `createdAt` AS `createdAt`
+prisma:query SELECT `main`.`messages`.`id`, `main`.`messages`.`conversationId`, `main`.`messages`.`role`, `main`.`messages`.`content`, `main`.`messages`.`tokens`, `main`.`messages`.`createdAt` FROM `main`.`messages` WHERE `main`.`messages`.`conversationId` = ? ORDER BY `main`.`messages`.`createdAt` ASC LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`document_chunks`.`id`, `main`.`document_chunks`.`documentId`, `main`.`document_chunks`.`content`, `main`.`document_chunks`.`chunkIndex`, `main`.`document_chunks`.`embedding`, `main`.`document_chunks`.`createdAt` FROM `main`.`document_chunks` WHERE 1=1 LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt` FROM `main`.`documents` WHERE `main`.`documents`.`id` IN (?) LIMIT ? OFFSET ?
+prisma:query INSERT INTO `main`.`messages` (`id`, `conversationId`, `role`, `content`, `tokens`, `createdAt`) VALUES (?,?,?,?,?,?) RETURNING `id` AS `id`, `conversationId` AS `conversationId`, `role` AS `role`, `content` AS `content`, `tokens` AS `tokens`, `createdAt` AS `createdAt`
+prisma:query UPDATE `main`.`conversations` SET `updatedAt` = ? WHERE (`main`.`conversations`.`id` = ? AND 1=1) RETURNING `id` AS `id`, `title` AS `title`, `createdAt` AS `createdAt`, `updatedAt` AS `updatedAt`
+ POST /api/chat 200 in 1721ms (compile: 2ms, render: 1718ms)
+prisma:query SELECT `main`.`conversations`.`id`, `main`.`conversations`.`title`, `main`.`conversations`.`createdAt`, `main`.`conversations`.`updatedAt` FROM `main`.`conversations` WHERE (`main`.`conversations`.`id` = ? AND 1=1) LIMIT ? OFFSET ?
+prisma:query INSERT INTO `main`.`messages` (`id`, `conversationId`, `role`, `content`, `tokens`, `createdAt`) VALUES (?,?,?,?,?,?) RETURNING `id` AS `id`, `conversationId` AS `conversationId`, `role` AS `role`, `content` AS `content`, `tokens` AS `tokens`, `createdAt` AS `createdAt`
+prisma:query SELECT `main`.`messages`.`id`, `main`.`messages`.`conversationId`, `main`.`messages`.`role`, `main`.`messages`.`content`, `main`.`messages`.`tokens`, `main`.`messages`.`createdAt` FROM `main`.`messages` WHERE `main`.`messages`.`conversationId` = ? ORDER BY `main`.`messages`.`createdAt` ASC LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`document_chunks`.`id`, `main`.`document_chunks`.`documentId`, `main`.`document_chunks`.`content`, `main`.`document_chunks`.`chunkIndex`, `main`.`document_chunks`.`embedding`, `main`.`document_chunks`.`createdAt` FROM `main`.`document_chunks` WHERE 1=1 LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt` FROM `main`.`documents` WHERE `main`.`documents`.`id` IN (?) LIMIT ? OFFSET ?
+prisma:query SELECT 1
+prisma:query INSERT INTO `main`.`messages` (`id`, `conversationId`, `role`, `content`, `tokens`, `createdAt`) VALUES (?,?,?,?,?,?) RETURNING `id` AS `id`, `conversationId` AS `conversationId`, `role` AS `role`, `content` AS `content`, `tokens` AS `tokens`, `createdAt` AS `createdAt`
+ POST /api/chat 200 in 1690ms (compile: 2ms, render: 1688ms)
+prisma:query UPDATE `main`.`conversations` SET `updatedAt` = ? WHERE (`main`.`conversations`.`id` = ? AND 1=1) RETURNING `id` AS `id`, `title` AS `title`, `createdAt` AS `createdAt`, `updatedAt` AS `updatedAt`
