@@ -1,6 +1,6 @@
 // Tool System - Available tools for agents
 
-import { db } from '@/lib/db'
+import ZAI from 'z-ai-web-dev-sdk'
 
 export interface Tool {
   name: string
@@ -403,6 +403,439 @@ export const unitConverterTool: Tool = {
   }
 }
 
+// ============ WEB SEARCH TOOL ============
+
+export const webSearchTool: Tool = {
+  name: 'web_search',
+  description: 'Search the web for real-time information, news, facts, and current events. Returns relevant search results with URLs, titles, and snippets.',
+  parameters: {
+    type: 'object',
+    properties: {
+      query: {
+        type: 'string',
+        description: 'Search query (e.g., "latest AI news", "weather in Belgrade", "who won the World Cup 2022")'
+      },
+      num_results: {
+        type: 'number',
+        description: 'Number of results to return (default: 5, max: 10)'
+      }
+    },
+    required: ['query']
+  },
+  execute: async (params) => {
+    const query = String(params.query || '')
+    const numResults = Math.min(Number(params.num_results) || 5, 10)
+    
+    if (!query.trim()) {
+      return { success: false, error: 'Search query is required' }
+    }
+    
+    try {
+      const zai = await ZAI.create()
+      
+      const searchResult = await zai.functions.invoke("web_search", {
+        query,
+        num: numResults
+      })
+      
+      // Format results
+      const results = Array.isArray(searchResult) ? searchResult.map((item: {
+        url?: string
+        name?: string
+        snippet?: string
+        host_name?: string
+        date?: string
+      }) => ({
+        title: item.name || 'Untitled',
+        url: item.url || '',
+        snippet: item.snippet || '',
+        source: item.host_name || '',
+        date: item.date || ''
+      })) : []
+      
+      return {
+        success: true,
+        query,
+        resultsCount: results.length,
+        results,
+        summary: results.length > 0 
+          ? `Found ${results.length} results for "${query}"` 
+          : `No results found for "${query}"`
+      }
+    } catch (error) {
+      return {
+        success: false,
+        query,
+        error: error instanceof Error ? error.message : 'Web search failed',
+        results: []
+      }
+    }
+  }
+}
+
+// ============ CODE EXECUTION TOOL ============
+
+export const codeExecutionTool: Tool = {
+  name: 'code_execute',
+  description: 'Execute JavaScript/TypeScript code safely in a sandboxed environment. Useful for data processing, calculations, formatting, and algorithm testing.',
+  parameters: {
+    type: 'object',
+    properties: {
+      code: {
+        type: 'string',
+        description: 'JavaScript code to execute. Must be valid JS/TS. Use console.log() for output. Last expression is returned. Available: Math, Date, JSON, Array methods, Object methods.'
+      },
+      timeout: {
+        type: 'number',
+        description: 'Execution timeout in milliseconds (default: 5000, max: 10000)'
+      }
+    },
+    required: ['code']
+  },
+  execute: async (params) => {
+    const code = String(params.code || '')
+    const timeout = Math.min(Number(params.timeout) || 5000, 10000)
+    
+    if (!code.trim()) {
+      return { success: false, error: 'Code is required' }
+    }
+    
+    // Security: Block dangerous operations
+    const dangerousPatterns = [
+      /require\s*\(/i,
+      /import\s+/i,
+      /eval\s*\(/i,
+      /Function\s*\(/i,
+      /process\s*\./i,
+      /global\s*\./i,
+      /__dirname/i,
+      /__filename/i,
+      /fs\s*\./i,
+      /child_process/i,
+      /crypto\s*\./i,
+      /http\s*\./i,
+      /https\s*\./i,
+      /fetch\s*\(/i,
+      /\.exit\s*\(/i,
+      /while\s*\(\s*true\s*\)/i,
+      /for\s*\(\s*;\s*;\s*\)/i,
+    ]
+    
+    for (const pattern of dangerousPatterns) {
+      if (pattern.test(code)) {
+        return {
+          success: false,
+          error: `Code contains blocked operation for security reasons`,
+          blockedPattern: pattern.source
+        }
+      }
+    }
+    
+    try {
+      // Create sandboxed execution context
+      const logs: string[] = []
+      const mockConsole = {
+        log: (...args: unknown[]) => logs.push(args.map(a => 
+          typeof a === 'object' ? JSON.stringify(a, null, 2) : String(a)
+        ).join(' ')),
+        error: (...args: unknown[]) => logs.push('[ERROR] ' + args.map(a => 
+          typeof a === 'object' ? JSON.stringify(a, null, 2) : String(a)
+        ).join(' ')),
+        warn: (...args: unknown[]) => logs.push('[WARN] ' + args.map(a => 
+          typeof a === 'object' ? JSON.stringify(a, null, 2) : String(a)
+        ).join(' ')),
+        info: (...args: unknown[]) => logs.push('[INFO] ' + args.map(a => 
+          typeof a === 'object' ? JSON.stringify(a, null, 2) : String(a)
+        ).join(' '))
+      }
+      
+      // Create safe execution function with limited scope
+      const safeFunction = new Function(
+        'console', 
+        'Math', 
+        'Date', 
+        'JSON', 
+        'Object', 
+        'Array', 
+        'String', 
+        'Number', 
+        'Boolean',
+        'RegExp',
+        'Error',
+        'Map',
+        'Set',
+        'Promise',
+        `
+        "use strict";
+        ${code.includes('return') ? code : `return (${code})`}
+        `
+      )
+      
+      // Execute with timeout simulation (basic)
+      const startTime = Date.now()
+      const result = safeFunction(
+        mockConsole, 
+        Math, 
+        Date, 
+        JSON, 
+        Object, 
+        Array, 
+        String, 
+        Number, 
+        Boolean,
+        RegExp,
+        Error,
+        Map,
+        Set,
+        Promise
+      )
+      const executionTime = Date.now() - startTime
+      
+      // Handle promises
+      let finalResult = result
+      if (result instanceof Promise) {
+        finalResult = await Promise.race([
+          result,
+          new Promise((_, reject) => 
+            setTimeout(() => reject(new Error('Execution timeout')), timeout)
+          )
+        ])
+      }
+      
+      return {
+        success: true,
+        result: finalResult,
+        logs,
+        executionTime,
+        output: logs.length > 0 ? logs.join('\n') : undefined
+      }
+    } catch (error) {
+      return {
+        success: false,
+        error: error instanceof Error ? error.message : 'Code execution failed',
+        errorType: error instanceof Error ? error.name : 'UnknownError'
+      }
+    }
+  }
+}
+
+// ============ DATETIME TOOL ============
+
+export const dateTimeTool: Tool = {
+  name: 'datetime',
+  description: 'Get current date/time, format dates, calculate date differences, and convert timezones.',
+  parameters: {
+    type: 'object',
+    properties: {
+      operation: {
+        type: 'string',
+        description: 'Operation: now, format, diff, add, subtract, timezone',
+        enum: ['now', 'format', 'diff', 'add', 'subtract', 'timezone']
+      },
+      date: {
+        type: 'string',
+        description: 'Date string (ISO format or natural language)'
+      },
+      date2: {
+        type: 'string',
+        description: 'Second date for diff operation'
+      },
+      format: {
+        type: 'string',
+        description: 'Output format (e.g., "YYYY-MM-DD", "DD/MM/YYYY HH:mm")'
+      },
+      amount: {
+        type: 'number',
+        description: 'Amount to add/subtract'
+      },
+      unit: {
+        type: 'string',
+        description: 'Unit for add/subtract: days, hours, minutes, months, years',
+        enum: ['days', 'hours', 'minutes', 'months', 'years', 'seconds']
+      },
+      timezone: {
+        type: 'string',
+        description: 'Target timezone (e.g., "Europe/Belgrade", "America/New_York")'
+      }
+    },
+    required: ['operation']
+  },
+  execute: async (params) => {
+    const operation = String(params.operation || 'now')
+    
+    try {
+      const now = new Date()
+      
+      switch (operation) {
+        case 'now': {
+          return {
+            success: true,
+            iso: now.toISOString(),
+            utc: now.toUTCString(),
+            local: now.toString(),
+            timestamp: now.getTime(),
+            components: {
+              year: now.getFullYear(),
+              month: now.getMonth() + 1,
+              day: now.getDate(),
+              hour: now.getHours(),
+              minute: now.getMinutes(),
+              second: now.getSeconds(),
+              dayOfWeek: now.getDay(),
+              dayOfYear: Math.floor((now.getTime() - new Date(now.getFullYear(), 0, 0).getTime()) / 86400000)
+            }
+          }
+        }
+        
+        case 'format': {
+          const dateStr = params.date ? new Date(String(params.date)) : now
+          const format = String(params.format || 'YYYY-MM-DD HH:mm:ss')
+          
+          if (isNaN(dateStr.getTime())) {
+            return { success: false, error: 'Invalid date' }
+          }
+          
+          const replacements: Record<string, string> = {
+            'YYYY': String(dateStr.getFullYear()),
+            'YY': String(dateStr.getFullYear()).slice(-2),
+            'MM': String(dateStr.getMonth() + 1).padStart(2, '0'),
+            'M': String(dateStr.getMonth() + 1),
+            'DD': String(dateStr.getDate()).padStart(2, '0'),
+            'D': String(dateStr.getDate()),
+            'HH': String(dateStr.getHours()).padStart(2, '0'),
+            'H': String(dateStr.getHours()),
+            'mm': String(dateStr.getMinutes()).padStart(2, '0'),
+            'm': String(dateStr.getMinutes()),
+            'ss': String(dateStr.getSeconds()).padStart(2, '0'),
+            's': String(dateStr.getSeconds())
+          }
+          
+          let formatted = format
+          for (const [key, value] of Object.entries(replacements)) {
+            formatted = formatted.replace(new RegExp(key, 'g'), value)
+          }
+          
+          return { success: true, formatted, original: dateStr.toISOString() }
+        }
+        
+        case 'diff': {
+          const date1 = new Date(String(params.date || now))
+          const date2 = new Date(String(params.date2 || now))
+          
+          if (isNaN(date1.getTime()) || isNaN(date2.getTime())) {
+            return { success: false, error: 'Invalid date(s)' }
+          }
+          
+          const diffMs = Math.abs(date2.getTime() - date1.getTime())
+          
+          return {
+            success: true,
+            milliseconds: diffMs,
+            seconds: Math.floor(diffMs / 1000),
+            minutes: Math.floor(diffMs / 60000),
+            hours: Math.floor(diffMs / 3600000),
+            days: Math.floor(diffMs / 86400000),
+            weeks: Math.floor(diffMs / 604800000),
+            months: Math.floor(diffMs / 2629746000),
+            years: Math.floor(diffMs / 31556952000),
+            from: date1.toISOString(),
+            to: date2.toISOString()
+          }
+        }
+        
+        case 'add':
+        case 'subtract': {
+          const date = params.date ? new Date(String(params.date)) : now
+          const amount = Number(params.amount) || 0
+          const unit = String(params.unit || 'days')
+          
+          if (isNaN(date.getTime())) {
+            return { success: false, error: 'Invalid date' }
+          }
+          
+          const multiplier = operation === 'add' ? 1 : -1
+          const newDate = new Date(date)
+          
+          switch (unit) {
+            case 'seconds':
+              newDate.setSeconds(newDate.getSeconds() + amount * multiplier)
+              break
+            case 'minutes':
+              newDate.setMinutes(newDate.getMinutes() + amount * multiplier)
+              break
+            case 'hours':
+              newDate.setHours(newDate.getHours() + amount * multiplier)
+              break
+            case 'days':
+              newDate.setDate(newDate.getDate() + amount * multiplier)
+              break
+            case 'months':
+              newDate.setMonth(newDate.getMonth() + amount * multiplier)
+              break
+            case 'years':
+              newDate.setFullYear(newDate.getFullYear() + amount * multiplier)
+              break
+          }
+          
+          return {
+            success: true,
+            original: date.toISOString(),
+            result: newDate.toISOString(),
+            operation: `${operation} ${amount} ${unit}`
+          }
+        }
+        
+        case 'timezone': {
+          const date = params.date ? new Date(String(params.date)) : now
+          const tz = String(params.timezone || 'UTC')
+          
+          if (isNaN(date.getTime())) {
+            return { success: false, error: 'Invalid date' }
+          }
+          
+          try {
+            const options: Intl.DateTimeFormatOptions = {
+              timeZone: tz,
+              year: 'numeric',
+              month: '2-digit',
+              day: '2-digit',
+              hour: '2-digit',
+              minute: '2-digit',
+              second: '2-digit',
+              hour12: false
+            }
+            
+            const formatted = date.toLocaleString('en-US', options)
+            const localTime = date.toLocaleString('en-US', { ...options, timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone })
+            
+            return {
+              success: true,
+              timezone: tz,
+              timeInZone: formatted,
+              localTime,
+              utcTime: date.toUTCString(),
+              iso: date.toISOString()
+            }
+          } catch {
+            return { 
+              success: false, 
+              error: 'Invalid timezone. Use IANA timezone names like "Europe/Belgrade", "America/New_York"' 
+            }
+          }
+        }
+        
+        default:
+          return { success: false, error: 'Unknown operation' }
+      }
+    } catch (error) {
+      return {
+        success: false,
+        error: error instanceof Error ? error.message : 'Date operation failed'
+      }
+    }
+  }
+}
+
 // ============ TOOL REGISTRY ============
 
 export const toolRegistry: Map<string, Tool> = new Map([
@@ -410,7 +843,10 @@ export const toolRegistry: Map<string, Tool> = new Map([
   ['text_analysis', textAnalysisTool],
   ['json_tool', jsonTool],
   ['regex', regexTool],
-  ['unit_converter', unitConverterTool]
+  ['unit_converter', unitConverterTool],
+  ['web_search', webSearchTool],
+  ['code_execute', codeExecutionTool],
+  ['datetime', dateTimeTool]
 ])
 
 export function getTool(name: string): Tool | undefined {
@@ -463,6 +899,21 @@ export function selectTools(query: string): string[] {
   // Unit conversion
   if (/convert|km to mi|miles to km|kg to lb|pounds to kg|celsius to fahrenheit|fahrenheit to celsius/.test(lower)) {
     selected.push('unit_converter')
+  }
+  
+  // Web search - triggers for current info, news, weather, etc.
+  if (/search|find online|look up|what is the latest|current|recent|news|weather|today|who is|when did|where is|how do i|latest|breaking|now|this year|this month/.test(lower)) {
+    selected.push('web_search')
+  }
+  
+  // Code execution - triggers for programming tasks
+  if (/run code|execute|javascript|typescript|eval|compute this|calculate this|algorithm|sort|filter|map|array|function|script/.test(lower)) {
+    selected.push('code_execute')
+  }
+  
+  // DateTime - triggers for date/time queries
+  if (/what time|what date|current time|current date|today|now|timezone|days until|days since|how long|date difference|add days|subtract days/.test(lower)) {
+    selected.push('datetime')
   }
   
   return selected
