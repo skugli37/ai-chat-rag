@@ -471,3 +471,466 @@ prisma:query SELECT 1
 prisma:query INSERT INTO `main`.`messages` (`id`, `conversationId`, `role`, `content`, `tokens`, `createdAt`) VALUES (?,?,?,?,?,?) RETURNING `id` AS `id`, `conversationId` AS `conversationId`, `role` AS `role`, `content` AS `content`, `tokens` AS `tokens`, `createdAt` AS `createdAt`
  POST /api/chat 200 in 1690ms (compile: 2ms, render: 1688ms)
 prisma:query UPDATE `main`.`conversations` SET `updatedAt` = ? WHERE (`main`.`conversations`.`id` = ? AND 1=1) RETURNING `id` AS `id`, `title` AS `title`, `createdAt` AS `createdAt`, `updatedAt` AS `updatedAt`
+prisma:query SELECT 1
+prisma:query BEGIN IMMEDIATE
+prisma:query INSERT INTO `main`.`documents` (`id`, `filename`, `content`, `fileType`, `fileSize`, `chunkCount`, `createdAt`, `updatedAt`) VALUES (?,?,?,?,?,?,?,?) RETURNING `id` AS `id`
+prisma:query INSERT INTO `main`.`document_chunks` (`id`, `documentId`, `content`, `chunkIndex`, `createdAt`) VALUES (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?)
+prisma:query INSERT INTO `main`.`document_chunks` (`id`, `documentId`, `content`, `chunkIndex`, `createdAt`) VALUES (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?)
+prisma:query INSERT INTO `main`.`document_chunks` (`id`, `documentId`, `content`, `chunkIndex`, `createdAt`) VALUES (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?), (?,?,?,?,?)
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt` FROM `main`.`documents` WHERE `main`.`documents`.`id` = ? LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`document_chunks`.`id`, `main`.`document_chunks`.`documentId`, `main`.`document_chunks`.`content`, `main`.`document_chunks`.`chunkIndex`, `main`.`document_chunks`.`embedding`, `main`.`document_chunks`.`createdAt` FROM `main`.`document_chunks` WHERE `main`.`document_chunks`.`documentId` IN (?) LIMIT ? OFFSET ?
+prisma:query COMMIT
+ POST /api/documents 200 in 86ms (compile: 1652µs, render: 84ms)
+ GET / 200 in 39ms (compile: 2ms, render: 37ms)
+prisma:query SELECT 1
+prisma:query SELECT `main`.`system_prompts`.`id`, `main`.`system_prompts`.`name`, `main`.`system_prompts`.`content`, `main`.`system_prompts`.`isDefault`, `main`.`system_prompts`.`createdAt`, `main`.`system_prompts`.`updatedAt` FROM `main`.`system_prompts` WHERE 1=1 ORDER BY `main`.`system_prompts`.`createdAt` DESC LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`conversations`.`id`, `main`.`conversations`.`title`, `main`.`conversations`.`createdAt`, `main`.`conversations`.`updatedAt` FROM `main`.`conversations` WHERE 1=1 ORDER BY `main`.`conversations`.`updatedAt` DESC LIMIT ? OFFSET ?
+ GET /api/system-prompts 200 in 11ms (compile: 3ms, render: 8ms)
+ GET /api/conversations/list 200 in 11ms (compile: 5ms, render: 6ms)
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt`, COALESCE(`aggr_selection_0_DocumentChunk`.`_aggr_count_chunks`, 0) AS `_aggr_count_chunks` FROM `main`.`documents` LEFT JOIN (SELECT `main`.`document_chunks`.`documentId`, COUNT(*) AS `_aggr_count_chunks` FROM `main`.`document_chunks` WHERE 1=1 GROUP BY `main`.`document_chunks`.`documentId`) AS `aggr_selection_0_DocumentChunk` ON (`main`.`documents`.`id` = `aggr_selection_0_DocumentChunk`.`documentId`) WHERE 1=1 ORDER BY `main`.`documents`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET /api/documents 200 in 15ms (compile: 974µs, render: 14ms)
+ GET / 200 in 72ms (compile: 47ms, render: 25ms)
+ GET / 200 in 34ms (compile: 4ms, render: 30ms)
+ GET / 200 in 14ms (compile: 1793µs, render: 12ms)
+ GET / 200 in 12ms (compile: 1699µs, render: 11ms)
+ GET / 200 in 17ms (compile: 2ms, render: 15ms)
+ GET / 200 in 22ms (compile: 4ms, render: 18ms)
+ GET / 200 in 12ms (compile: 1893µs, render: 10ms)
+ GET / 200 in 18ms (compile: 2ms, render: 16ms)
+ GET / 200 in 22ms (compile: 3ms, render: 19ms)
+ GET / 200 in 13ms (compile: 2ms, render: 11ms)
+ GET / 200 in 16ms (compile: 2ms, render: 13ms)
+ GET / 200 in 15ms (compile: 1958µs, render: 13ms)
+ GET / 200 in 14ms (compile: 1966µs, render: 12ms)
+ GET / 200 in 13ms (compile: 1997µs, render: 11ms)
+ GET / 200 in 17ms (compile: 3ms, render: 14ms)
+ GET / 200 in 15ms (compile: 3ms, render: 12ms)
+ GET / 200 in 14ms (compile: 3ms, render: 11ms)
+ GET / 200 in 24ms (compile: 1909µs, render: 22ms)
+✓ Compiled in 202ms
+prisma:query SELECT 1
+prisma:query INSERT INTO `main`.`conversations` (`id`, `title`, `createdAt`, `updatedAt`) VALUES (?,?,?,?) RETURNING `id` AS `id`, `title` AS `title`, `createdAt` AS `createdAt`, `updatedAt` AS `updatedAt`
+prisma:query INSERT INTO `main`.`messages` (`id`, `conversationId`, `role`, `content`, `tokens`, `createdAt`) VALUES (?,?,?,?,?,?) RETURNING `id` AS `id`, `conversationId` AS `conversationId`, `role` AS `role`, `content` AS `content`, `tokens` AS `tokens`, `createdAt` AS `createdAt`
+prisma:query SELECT `main`.`messages`.`id`, `main`.`messages`.`conversationId`, `main`.`messages`.`role`, `main`.`messages`.`content`, `main`.`messages`.`tokens`, `main`.`messages`.`createdAt` FROM `main`.`messages` WHERE `main`.`messages`.`conversationId` = ? ORDER BY `main`.`messages`.`createdAt` ASC LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`document_chunks`.`id`, `main`.`document_chunks`.`documentId`, `main`.`document_chunks`.`content`, `main`.`document_chunks`.`chunkIndex`, `main`.`document_chunks`.`embedding`, `main`.`document_chunks`.`createdAt` FROM `main`.`document_chunks` WHERE 1=1 LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt` FROM `main`.`documents` WHERE `main`.`documents`.`id` IN (?,?) LIMIT ? OFFSET ?
+prisma:query INSERT INTO `main`.`messages` (`id`, `conversationId`, `role`, `content`, `tokens`, `createdAt`) VALUES (?,?,?,?,?,?) RETURNING `id` AS `id`, `conversationId` AS `conversationId`, `role` AS `role`, `content` AS `content`, `tokens` AS `tokens`, `createdAt` AS `createdAt`
+ POST /api/chat/stream 200 in 3.7s (compile: 89ms, render: 3.6s)
+prisma:query INSERT INTO `main`.`conversations` (`id`, `title`, `createdAt`, `updatedAt`) VALUES (?,?,?,?) RETURNING `id` AS `id`, `title` AS `title`, `createdAt` AS `createdAt`, `updatedAt` AS `updatedAt`
+prisma:query INSERT INTO `main`.`messages` (`id`, `conversationId`, `role`, `content`, `tokens`, `createdAt`) VALUES (?,?,?,?,?,?) RETURNING `id` AS `id`, `conversationId` AS `conversationId`, `role` AS `role`, `content` AS `content`, `tokens` AS `tokens`, `createdAt` AS `createdAt`
+prisma:query SELECT `main`.`messages`.`id`, `main`.`messages`.`conversationId`, `main`.`messages`.`role`, `main`.`messages`.`content`, `main`.`messages`.`tokens`, `main`.`messages`.`createdAt` FROM `main`.`messages` WHERE `main`.`messages`.`conversationId` = ? ORDER BY `main`.`messages`.`createdAt` ASC LIMIT ? OFFSET ?
+Chat error: Error [PrismaClientValidationError]: 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["db"].message.create()` invocation in
+/home/z/my-project/.next/dev/server/chunks/[root-of-the-server]__d8e407f7._.js:334:169
+
+  331 });
+  332 const response = completion.choices[0]?.message?.content || 'Nema odgovora';
+  333 // Save assistant message
+→ 334 const assistantMessage = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["db"].message.create({
+        data: {
+          conversationId: "cmmphaloi00gts7ax4vvq7yw5",
+          role: "assistant",
+          content: "RAG (Retrieval-Augmented Generation) je tehnika koja poboljšava generativne modele učitavanjem relevantnih podataka iz vanjskih izvora prije generiranja odgovora.",
+          tokens: 18,
+          parentMessageId: "cmmphalom00gvs7axq5vq53cs",
+          ~~~~~~~~~~~~~~~
+      ?   id?: String,
+      ?   createdAt?: DateTime
+        }
+      })
+
+Unknown argument `parentMessageId`. Available options are marked with ?.
+    at <unknown> (src/app/api/chat/route.ts:290:47)
+    at async POST (src/app/api/chat/route.ts:290:30)
+  288 |
+  289 |     // Save assistant message
+> 290 |     const assistantMessage = await db.message.create({
+      |                                               ^
+  291 |       data: {
+  292 |         conversationId: conv.id,
+  293 |         role: 'assistant', {
+  clientVersion: '6.19.2'
+}
+ POST /api/chat 500 in 1435ms (compile: 48ms, render: 1386ms)
+prisma:query SELECT 1
+prisma:query INSERT INTO `main`.`conversations` (`id`, `title`, `createdAt`, `updatedAt`) VALUES (?,?,?,?) RETURNING `id` AS `id`, `title` AS `title`, `createdAt` AS `createdAt`, `updatedAt` AS `updatedAt`
+prisma:query INSERT INTO `main`.`messages` (`id`, `conversationId`, `role`, `content`, `tokens`, `createdAt`) VALUES (?,?,?,?,?,?) RETURNING `id` AS `id`, `conversationId` AS `conversationId`, `role` AS `role`, `content` AS `content`, `tokens` AS `tokens`, `createdAt` AS `createdAt`
+prisma:query SELECT `main`.`messages`.`id`, `main`.`messages`.`conversationId`, `main`.`messages`.`role`, `main`.`messages`.`content`, `main`.`messages`.`tokens`, `main`.`messages`.`createdAt` FROM `main`.`messages` WHERE `main`.`messages`.`conversationId` = ? ORDER BY `main`.`messages`.`createdAt` ASC LIMIT ? OFFSET ?
+prisma:query INSERT INTO `main`.`messages` (`id`, `conversationId`, `role`, `content`, `tokens`, `createdAt`) VALUES (?,?,?,?,?,?) RETURNING `id` AS `id`, `conversationId` AS `conversationId`, `role` AS `role`, `content` AS `content`, `tokens` AS `tokens`, `createdAt` AS `createdAt`
+ POST /api/chat 200 in 1052ms (compile: 37ms, render: 1014ms)
+prisma:query SELECT 1
+Upload error: Error [PrismaClientValidationError]: 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["db"].document.create()` invocation in
+/home/z/my-project/.next/dev/server/chunks/[root-of-the-server]__fe14b45d._.js:198:162
+
+  195     index: idx
+  196 });
+  197 // Create document
+→ 198 const document = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["db"].document.create({
+        data: {
+          filename: "text-input",
+          content: "RAG (Retrieval-Augmented Generation) je tehnika koja kombinuje pretragu informacija sa generativnim AI modelima. Omogućava AI asistentima da koriste eksternalne baze znanja za preciznije odgovore. Embeddings su vektorske reprezentacije teksta koje omogućavaju semantic search. BM25 je algoritam za keyword search koji koristi TF-IDF weighting. Hybrid search kombinuje semantic i keyword search za bolje rezultate.",
+          fileType: "txt",
+          fileSize: 415,
+          chunkCount: 1,
+          chunks: {
+            create: [
+              {
+                content: "RAG (Retrieval-Augmented Generation) je tehnika koja kombinuje pretragu informacija sa generativnim AI modelima. Omogućava AI asistentima da koriste eksternalne baze znanja za preciznije odgovore. Embeddings su vektorske reprezentacije teksta koje omogućavaju semantic search. BM25 je algoritam za keyword search koji koristi TF-IDF weighting. Hybrid search kombinuje semantic i keyword search za bolje rezultate.",
+                chunkIndex: 0,
+                embedding: "[0,0,0,0,0.10175134575347322,0.03391711525115774,0,0.15262701863020983,0,0,0,0.15262701863020983,0,0,0.05087567287673661,0,0,0.10175134575347322,0,0,0,0.025437836438368305,0.10175134575347322,0,0.020350269150694645,0,0,0.05087567287673661,0,0.045788105589062954,0,0.020350269150694645,0.06783423050231548,0.05087567287673661,0,0.020350269150694645,0,0.05087567287673661,0.020350269150694645,0,0.10175134575347322,0,0,0.03391711525115774,0.03391711525115774,0,0,0,0.05087567287673661,0,0,0,0,0.13566846100463095,0.03391711525115774,0,0,0.08479278812789434,0,0,0.025437836438368305,0.03391711525115774,0.020350269150694645,0,0,0,0,0,0.03391711525115774,0,0.20350269150694644,0,0,0.025437836438368305,0,0.05087567287673661,0.020350269150694645,0,0,0,0.020350269150694645,0,0.05087567287673661,0,0.08479278812789434,0,0,0,0.30525403726041966,0,0,0.10175134575347322,0,0.020350269150694645,0,0,0,0,0.03391711525115774,0.05087567287673661,0.10175134575347322,0,0,0,0.03391711525115774,0,0.05935495168952604,0,0.025437836438368305,0.07631350931510492,0.10175134575347322,0,0.025437836438368305,0,0.20350269150694644,0,0.020350269150694645,0,0,0,0.025437836438368305,0.05087567287673661,0,0,0,0.06783423050231548,0,0,0,0,0.07631350931510492,0.025437836438368305,0,0,0.0661383747397576,0,0,0.020350269150694645,0.12718918219184153,0,0,0,0,0,0,0.025437836438368305,0,0.10175134575347322,0,0,0.03391711525115774,0,0.20350269150694644,0,0,0,0,0.025437836438368305,0,0.10175134575347322,0,0.05935495168952604,0,0,0.061050807452083945,0,0,0.020350269150694645,0,0,0.025437836438368305,0,0,0,0,0.05087567287673661,0.03391711525115774,0.05087567287673661,0,0,0,0.025437836438368305,0,0.08479278812789434,0,0.03391711525115774,0.1424518840548625,0,0,0.03391711525115774,0.020350269150694645,0.05087567287673661,0,0.025437836438368305,0,0,0,0.020350269150694645,0.10175134575347322,0,0,0,0.10175134575347322,0,0,0,0,0.05426738440185239,0.020350269150694645,0,0.20350269150694644,0.020350269150694645,0,0.10175134575347322,0,0.07122594202743125,0,0,0,0,0,0,0.020350269150694645,0,0.06783423050231548,0,0,0.05087567287673661,0.020350269150694645,0.05087567287673661,0,0,0,0,0.03391711525115774,0.020350269150694645,0,0,0.045788105589062954,0,0,0.07631350931510492,0,0,0.025437836438368305,0,0,0.03391711525115774,0,0,0,0,0.10175134575347322,0.025437836438368305,0.03391711525115774,0,0,0,0.020350269150694645,0,0.15262701863020983,0,0.1729772877809045,0.025437836438368305,0,0,0.05087567287673661,0.025437836438368305,0.03391711525115774,0,0.03391711525115774,0,0,0.10175134575347322,0.020350269150694645,0,0,0,0,0.20350269150694644,0,0,0,0.10175134575347322,0.12718918219184153,0,0,0.20350269150694644,0,0,0.05087567287673661,0.10175134575347322,0.03391711525115774,0,0,0,0,0,0.10175134575347322,0,0,0.05087567287673661,0,0,0.10175134575347322,0.025437836438368305,0.03391711525115774,0,0,0,0,0.05087567287673661,0.025437836438368305,0,0.10175134575347322,0.020350269150694645,0,0,0.10175134575347322,0,0,0.03391711525115774,0,0,0.05087567287673661,0,0,0,0.020350269150694645,0,0.020350269150694645,0.025437836438368305,0,0,0.10175134575347322,0,0.020350269150694645,0.10175134575347322,0,0.17806485506857814,0.03391711525115774,0,0,0.10175134575347322,0.03391711525115774,0.025437836438368305,0,0.05087567287673661,0,0,0.05087567287673661,0.025437836438368305,0,0,0,0.04070053830138929,0,0,0,0,0.05087567287673661,0.07122594202743125,0,0,0.11870990337905209,0,0,0.03391711525115774,0.05087567287673661,0.025437836438368305,0,0,0,0,0,0.05087567287673661,0,0,0.04070053830138929,0,0.020350269150694645,0,0.03391711525115774,0.025437836438368305]",
+                tokens: "[\"rag\",\"retrieval\",\"augmented\",\"generation\",\"tehnika\",\"koja\",\"kombinuje\",\"pretragu\",\"informacija\",\"generativnim\",\"modelima\",\"omogu\",\"ava\",\"asistentima\",\"koriste\",\"eksternalne\",\"baze\",\"znanja\",\"preciznije\",\"odgovore\",\"embeddings\",\"vektorske\",\"reprezentacije\",\"teksta\",\"koje\",\"omogu\",\"avaju\",\"semantic\",\"search\",\"bm25\",\"algoritam\",\"keyword\",\"search\",\"koji\",\"koristi\",\"idf\",\"weighting\",\"hybrid\",\"search\",\"kombinuje\",\"semantic\",\"keyword\",\"search\",\"bolje\",\"rezultate\"]"
+              }
+            ]
+          }
+        },
+        include: {
+          chunks: true
+        }
+      })
+
+Unknown argument `tokens`. Available options are marked with ?.
+    at <unknown> (src/app/api/documents/route.ts:109:40)
+    at async POST (src/app/api/documents/route.ts:109:22)
+  107 |
+  108 |     // Create document
+> 109 |     const document = await db.document.create({
+      |                                        ^
+  110 |       data: {
+  111 |         filename,
+  112 |         content, {
+  clientVersion: '6.19.2'
+}
+ POST /api/documents 500 in 255ms (compile: 36ms, render: 219ms)
+ GET / 200 in 98ms (compile: 57ms, render: 42ms)
+ GET /api/documents 200 in 26ms (compile: 4ms, render: 22ms)
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt`, COALESCE(`aggr_selection_0_DocumentChunk`.`_aggr_count_chunks`, 0) AS `_aggr_count_chunks` FROM `main`.`documents` LEFT JOIN (SELECT `main`.`document_chunks`.`documentId`, COUNT(*) AS `_aggr_count_chunks` FROM `main`.`document_chunks` WHERE 1=1 GROUP BY `main`.`document_chunks`.`documentId`) AS `aggr_selection_0_DocumentChunk` ON (`main`.`documents`.`id` = `aggr_selection_0_DocumentChunk`.`documentId`) WHERE 1=1 ORDER BY `main`.`documents`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET /api/system-prompts 200 in 56ms (compile: 41ms, render: 14ms)
+Error fetching templates: TypeError: Cannot read properties of undefined (reading 'findMany')
+    at GET (src/app/api/templates/route.ts:7:47)
+   5 | export async function GET() {
+   6 |   try {
+>  7 |     const templates = await db.promptTemplate.findMany({
+     |                                               ^
+   8 |       orderBy: [{ category: 'asc' }, { name: 'asc' }]
+   9 |     })
+  10 |     
+ GET /api/templates 500 in 192ms (compile: 103ms, render: 90ms)
+prisma:query SELECT `main`.`system_prompts`.`id`, `main`.`system_prompts`.`name`, `main`.`system_prompts`.`content`, `main`.`system_prompts`.`isDefault`, `main`.`system_prompts`.`createdAt`, `main`.`system_prompts`.`updatedAt` FROM `main`.`system_prompts` WHERE 1=1 ORDER BY `main`.`system_prompts`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET / 200 in 27ms (compile: 2ms, render: 25ms)
+ GET / 200 in 18ms (compile: 3ms, render: 15ms)
+ GET / 200 in 17ms (compile: 2ms, render: 15ms)
+ GET / 200 in 18ms (compile: 2ms, render: 15ms)
+ GET / 200 in 18ms (compile: 3ms, render: 15ms)
+ GET / 200 in 25ms (compile: 3ms, render: 23ms)
+ GET / 200 in 13ms (compile: 1819µs, render: 11ms)
+ GET / 200 in 14ms (compile: 1827µs, render: 12ms)
+ GET / 200 in 14ms (compile: 1868µs, render: 12ms)
+ GET / 200 in 19ms (compile: 3ms, render: 16ms)
+ GET / 200 in 17ms (compile: 2ms, render: 14ms)
+ GET / 200 in 21ms (compile: 2ms, render: 19ms)
+ GET / 200 in 15ms (compile: 1992µs, render: 13ms)
+ GET / 200 in 12ms (compile: 1886µs, render: 11ms)
+ GET / 200 in 13ms (compile: 1779µs, render: 11ms)
+ GET / 200 in 14ms (compile: 1737µs, render: 12ms)
+ GET / 200 in 14ms (compile: 1731µs, render: 12ms)
+ GET / 200 in 18ms (compile: 1811µs, render: 16ms)
+ GET / 200 in 15ms (compile: 1950µs, render: 13ms)
+ GET / 200 in 13ms (compile: 1720µs, render: 11ms)
+ GET / 200 in 13ms (compile: 1999µs, render: 11ms)
+ GET / 200 in 16ms (compile: 1791µs, render: 14ms)
+ GET / 200 in 13ms (compile: 1954µs, render: 11ms)
+ GET / 200 in 11ms (compile: 1745µs, render: 10ms)
+ GET / 200 in 17ms (compile: 3ms, render: 14ms)
+ GET / 200 in 13ms (compile: 1999µs, render: 11ms)
+ GET / 200 in 14ms (compile: 1952µs, render: 12ms)
+ GET / 200 in 13ms (compile: 1968µs, render: 11ms)
+ GET / 200 in 27ms (compile: 1770µs, render: 25ms)
+ GET / 200 in 13ms (compile: 2ms, render: 11ms)
+ GET / 200 in 12ms (compile: 1789µs, render: 10ms)
+ GET / 200 in 12ms (compile: 1828µs, render: 10ms)
+ GET / 200 in 12ms (compile: 2ms, render: 10ms)
+ GET / 200 in 11ms (compile: 1547µs, render: 9ms)
+ GET / 200 in 12ms (compile: 2ms, render: 10ms)
+ GET / 200 in 11ms (compile: 1575µs, render: 10ms)
+ GET / 200 in 16ms (compile: 2ms, render: 14ms)
+ GET / 200 in 19ms (compile: 2ms, render: 17ms)
+ GET / 200 in 17ms (compile: 2ms, render: 14ms)
+ GET / 200 in 16ms (compile: 2ms, render: 14ms)
+ GET / 200 in 18ms (compile: 2ms, render: 16ms)
+ GET / 200 in 16ms (compile: 2ms, render: 14ms)
+ GET / 200 in 16ms (compile: 2ms, render: 14ms)
+ GET / 200 in 13ms (compile: 1785µs, render: 11ms)
+ GET / 200 in 11ms (compile: 1690µs, render: 10ms)
+ GET / 200 in 12ms (compile: 1651µs, render: 10ms)
+ GET / 200 in 12ms (compile: 1764µs, render: 10ms)
+ GET / 200 in 16ms (compile: 1573µs, render: 14ms)
+ GET / 200 in 16ms (compile: 2ms, render: 14ms)
+ GET / 200 in 12ms (compile: 1653µs, render: 10ms)
+prisma:query SELECT 1
+Upload error: Error [PrismaClientValidationError]: 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["db"].document.create()` invocation in
+/home/z/my-project/.next/dev/server/chunks/[root-of-the-server]__fe14b45d._.js:198:162
+
+  195     index: idx
+  196 });
+  197 // Create document
+→ 198 const document = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["db"].document.create({
+        data: {
+          filename: "text-input",
+          content: "RAG (Retrieval-Augmented Generation) je tehnika koja kombinuje pretragu informacija sa generativnim AI modelima. Omogućava AI asistentima da koriste eksternalne baze znanja za preciznije odgovore. Embeddings su vektorske reprezentacije teksta koje omogućavaju semantic search. BM25 je algoritam za keyword search koji koristi TF-IDF weighting. Hybrid search kombinuje semantic i keyword search za bolje rezultate.",
+          fileType: "txt",
+          fileSize: 415,
+          chunkCount: 1,
+          chunks: {
+            create: [
+              {
+                content: "RAG (Retrieval-Augmented Generation) je tehnika koja kombinuje pretragu informacija sa generativnim AI modelima. Omogućava AI asistentima da koriste eksternalne baze znanja za preciznije odgovore. Embeddings su vektorske reprezentacije teksta koje omogućavaju semantic search. BM25 je algoritam za keyword search koji koristi TF-IDF weighting. Hybrid search kombinuje semantic i keyword search za bolje rezultate.",
+                chunkIndex: 0,
+                embedding: "[0,0,0,0,0.10175134575347322,0.03391711525115774,0,0.15262701863020983,0,0,0,0.15262701863020983,0,0,0.05087567287673661,0,0,0.10175134575347322,0,0,0,0.025437836438368305,0.10175134575347322,0,0.020350269150694645,0,0,0.05087567287673661,0,0.045788105589062954,0,0.020350269150694645,0.06783423050231548,0.05087567287673661,0,0.020350269150694645,0,0.05087567287673661,0.020350269150694645,0,0.10175134575347322,0,0,0.03391711525115774,0.03391711525115774,0,0,0,0.05087567287673661,0,0,0,0,0.13566846100463095,0.03391711525115774,0,0,0.08479278812789434,0,0,0.025437836438368305,0.03391711525115774,0.020350269150694645,0,0,0,0,0,0.03391711525115774,0,0.20350269150694644,0,0,0.025437836438368305,0,0.05087567287673661,0.020350269150694645,0,0,0,0.020350269150694645,0,0.05087567287673661,0,0.08479278812789434,0,0,0,0.30525403726041966,0,0,0.10175134575347322,0,0.020350269150694645,0,0,0,0,0.03391711525115774,0.05087567287673661,0.10175134575347322,0,0,0,0.03391711525115774,0,0.05935495168952604,0,0.025437836438368305,0.07631350931510492,0.10175134575347322,0,0.025437836438368305,0,0.20350269150694644,0,0.020350269150694645,0,0,0,0.025437836438368305,0.05087567287673661,0,0,0,0.06783423050231548,0,0,0,0,0.07631350931510492,0.025437836438368305,0,0,0.0661383747397576,0,0,0.020350269150694645,0.12718918219184153,0,0,0,0,0,0,0.025437836438368305,0,0.10175134575347322,0,0,0.03391711525115774,0,0.20350269150694644,0,0,0,0,0.025437836438368305,0,0.10175134575347322,0,0.05935495168952604,0,0,0.061050807452083945,0,0,0.020350269150694645,0,0,0.025437836438368305,0,0,0,0,0.05087567287673661,0.03391711525115774,0.05087567287673661,0,0,0,0.025437836438368305,0,0.08479278812789434,0,0.03391711525115774,0.1424518840548625,0,0,0.03391711525115774,0.020350269150694645,0.05087567287673661,0,0.025437836438368305,0,0,0,0.020350269150694645,0.10175134575347322,0,0,0,0.10175134575347322,0,0,0,0,0.05426738440185239,0.020350269150694645,0,0.20350269150694644,0.020350269150694645,0,0.10175134575347322,0,0.07122594202743125,0,0,0,0,0,0,0.020350269150694645,0,0.06783423050231548,0,0,0.05087567287673661,0.020350269150694645,0.05087567287673661,0,0,0,0,0.03391711525115774,0.020350269150694645,0,0,0.045788105589062954,0,0,0.07631350931510492,0,0,0.025437836438368305,0,0,0.03391711525115774,0,0,0,0,0.10175134575347322,0.025437836438368305,0.03391711525115774,0,0,0,0.020350269150694645,0,0.15262701863020983,0,0.1729772877809045,0.025437836438368305,0,0,0.05087567287673661,0.025437836438368305,0.03391711525115774,0,0.03391711525115774,0,0,0.10175134575347322,0.020350269150694645,0,0,0,0,0.20350269150694644,0,0,0,0.10175134575347322,0.12718918219184153,0,0,0.20350269150694644,0,0,0.05087567287673661,0.10175134575347322,0.03391711525115774,0,0,0,0,0,0.10175134575347322,0,0,0.05087567287673661,0,0,0.10175134575347322,0.025437836438368305,0.03391711525115774,0,0,0,0,0.05087567287673661,0.025437836438368305,0,0.10175134575347322,0.020350269150694645,0,0,0.10175134575347322,0,0,0.03391711525115774,0,0,0.05087567287673661,0,0,0,0.020350269150694645,0,0.020350269150694645,0.025437836438368305,0,0,0.10175134575347322,0,0.020350269150694645,0.10175134575347322,0,0.17806485506857814,0.03391711525115774,0,0,0.10175134575347322,0.03391711525115774,0.025437836438368305,0,0.05087567287673661,0,0,0.05087567287673661,0.025437836438368305,0,0,0,0.04070053830138929,0,0,0,0,0.05087567287673661,0.07122594202743125,0,0,0.11870990337905209,0,0,0.03391711525115774,0.05087567287673661,0.025437836438368305,0,0,0,0,0,0.05087567287673661,0,0,0.04070053830138929,0,0.020350269150694645,0,0.03391711525115774,0.025437836438368305]",
+                tokens: "[\"rag\",\"retrieval\",\"augmented\",\"generation\",\"tehnika\",\"koja\",\"kombinuje\",\"pretragu\",\"informacija\",\"generativnim\",\"modelima\",\"omogu\",\"ava\",\"asistentima\",\"koriste\",\"eksternalne\",\"baze\",\"znanja\",\"preciznije\",\"odgovore\",\"embeddings\",\"vektorske\",\"reprezentacije\",\"teksta\",\"koje\",\"omogu\",\"avaju\",\"semantic\",\"search\",\"bm25\",\"algoritam\",\"keyword\",\"search\",\"koji\",\"koristi\",\"idf\",\"weighting\",\"hybrid\",\"search\",\"kombinuje\",\"semantic\",\"keyword\",\"search\",\"bolje\",\"rezultate\"]"
+              }
+            ]
+          }
+        },
+        include: {
+          chunks: true
+        }
+      })
+
+Unknown argument `tokens`. Available options are marked with ?.
+    at <unknown> (src/app/api/documents/route.ts:109:40)
+    at async POST (src/app/api/documents/route.ts:109:22)
+  107 |
+  108 |     // Create document
+> 109 |     const document = await db.document.create({
+      |                                        ^
+  110 |       data: {
+  111 |         filename,
+  112 |         content, {
+  clientVersion: '6.19.2'
+}
+ POST /api/documents 500 in 145ms (compile: 2ms, render: 143ms)
+ GET / 200 in 11ms (compile: 1637µs, render: 10ms)
+ GET / 200 in 15ms (compile: 1999µs, render: 13ms)
+ GET / 200 in 35ms (compile: 1828µs, render: 33ms)
+ GET / 200 in 14ms (compile: 2ms, render: 12ms)
+ GET / 200 in 12ms (compile: 2ms, render: 10ms)
+ GET / 200 in 11ms (compile: 1555µs, render: 10ms)
+ GET / 200 in 12ms (compile: 2ms, render: 9ms)
+ GET / 200 in 11ms (compile: 1833µs, render: 10ms)
+ GET / 200 in 12ms (compile: 1593µs, render: 10ms)
+ GET / 200 in 12ms (compile: 1602µs, render: 10ms)
+ GET / 200 in 13ms (compile: 2ms, render: 11ms)
+ GET / 200 in 12ms (compile: 1586µs, render: 10ms)
+ GET / 200 in 12ms (compile: 1876µs, render: 10ms)
+ GET / 200 in 14ms (compile: 2ms, render: 12ms)
+ GET / 200 in 12ms (compile: 3ms, render: 9ms)
+prisma:query SELECT 1
+prisma:query BEGIN IMMEDIATE
+prisma:query INSERT INTO `main`.`documents` (`id`, `filename`, `content`, `fileType`, `fileSize`, `chunkCount`, `createdAt`, `updatedAt`) VALUES (?,?,?,?,?,?,?,?) RETURNING `id` AS `id`
+prisma:query INSERT INTO `main`.`document_chunks` (`id`, `documentId`, `content`, `chunkIndex`, `embedding`, `createdAt`) VALUES (?,?,?,?,?,?) RETURNING `id` AS `id`
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt` FROM `main`.`documents` WHERE `main`.`documents`.`id` = ? LIMIT ? OFFSET ?
+prisma:query COMMIT
+ POST /api/documents 200 in 55ms (compile: 40ms, render: 14ms)
+prisma:query INSERT INTO `main`.`conversations` (`id`, `title`, `createdAt`, `updatedAt`) VALUES (?,?,?,?) RETURNING `id` AS `id`, `title` AS `title`, `createdAt` AS `createdAt`, `updatedAt` AS `updatedAt`
+prisma:query INSERT INTO `main`.`messages` (`id`, `conversationId`, `role`, `content`, `tokens`, `createdAt`) VALUES (?,?,?,?,?,?) RETURNING `id` AS `id`, `conversationId` AS `conversationId`, `role` AS `role`, `content` AS `content`, `tokens` AS `tokens`, `createdAt` AS `createdAt`
+prisma:query SELECT `main`.`messages`.`id`, `main`.`messages`.`conversationId`, `main`.`messages`.`role`, `main`.`messages`.`content`, `main`.`messages`.`tokens`, `main`.`messages`.`createdAt` FROM `main`.`messages` WHERE `main`.`messages`.`conversationId` = ? ORDER BY `main`.`messages`.`createdAt` ASC LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`document_chunks`.`id`, `main`.`document_chunks`.`documentId`, `main`.`document_chunks`.`content`, `main`.`document_chunks`.`chunkIndex`, `main`.`document_chunks`.`embedding`, `main`.`document_chunks`.`createdAt` FROM `main`.`document_chunks` WHERE 1=1 ORDER BY `main`.`document_chunks`.`id` ASC LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt` FROM `main`.`documents` WHERE `main`.`documents`.`id` IN (?,?) LIMIT ? OFFSET ?
+prisma:query INSERT INTO `main`.`messages` (`id`, `conversationId`, `role`, `content`, `tokens`, `createdAt`) VALUES (?,?,?,?,?,?) RETURNING `id` AS `id`, `conversationId` AS `conversationId`, `role` AS `role`, `content` AS `content`, `tokens` AS `tokens`, `createdAt` AS `createdAt`
+ POST /api/chat 200 in 4.4s (compile: 2ms, render: 4.4s)
+ GET / 200 in 169ms (compile: 3ms, render: 166ms)
+prisma:query SELECT 1
+ GET /api/documents 200 in 17ms (compile: 3ms, render: 14ms)
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt`, COALESCE(`aggr_selection_0_DocumentChunk`.`_aggr_count_chunks`, 0) AS `_aggr_count_chunks` FROM `main`.`documents` LEFT JOIN (SELECT `main`.`document_chunks`.`documentId`, COUNT(*) AS `_aggr_count_chunks` FROM `main`.`document_chunks` WHERE 1=1 GROUP BY `main`.`document_chunks`.`documentId`) AS `aggr_selection_0_DocumentChunk` ON (`main`.`documents`.`id` = `aggr_selection_0_DocumentChunk`.`documentId`) WHERE 1=1 ORDER BY `main`.`documents`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET /api/system-prompts 200 in 17ms (compile: 12ms, render: 5ms)
+prisma:query SELECT `main`.`system_prompts`.`id`, `main`.`system_prompts`.`name`, `main`.`system_prompts`.`content`, `main`.`system_prompts`.`isDefault`, `main`.`system_prompts`.`createdAt`, `main`.`system_prompts`.`updatedAt` FROM `main`.`system_prompts` WHERE 1=1 ORDER BY `main`.`system_prompts`.`createdAt` DESC LIMIT ? OFFSET ?
+Error fetching templates: TypeError: Cannot read properties of undefined (reading 'findMany')
+    at GET (src/app/api/templates/route.ts:7:47)
+   5 | export async function GET() {
+   6 |   try {
+>  7 |     const templates = await db.promptTemplate.findMany({
+     |                                               ^
+   8 |       orderBy: [{ category: 'asc' }, { name: 'asc' }]
+   9 |     })
+  10 |     
+ GET /api/templates 500 in 83ms (compile: 4ms, render: 79ms)
+prisma:query SELECT 1
+prisma:query INSERT INTO `main`.`conversations` (`id`, `title`, `createdAt`, `updatedAt`) VALUES (?,?,?,?) RETURNING `id` AS `id`, `title` AS `title`, `createdAt` AS `createdAt`, `updatedAt` AS `updatedAt`
+prisma:query INSERT INTO `main`.`messages` (`id`, `conversationId`, `role`, `content`, `tokens`, `createdAt`) VALUES (?,?,?,?,?,?) RETURNING `id` AS `id`, `conversationId` AS `conversationId`, `role` AS `role`, `content` AS `content`, `tokens` AS `tokens`, `createdAt` AS `createdAt`
+prisma:query SELECT `main`.`messages`.`id`, `main`.`messages`.`conversationId`, `main`.`messages`.`role`, `main`.`messages`.`content`, `main`.`messages`.`tokens`, `main`.`messages`.`createdAt` FROM `main`.`messages` WHERE `main`.`messages`.`conversationId` = ? ORDER BY `main`.`messages`.`createdAt` ASC LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`document_chunks`.`id`, `main`.`document_chunks`.`documentId`, `main`.`document_chunks`.`content`, `main`.`document_chunks`.`chunkIndex`, `main`.`document_chunks`.`embedding`, `main`.`document_chunks`.`createdAt` FROM `main`.`document_chunks` WHERE 1=1 ORDER BY `main`.`document_chunks`.`id` ASC LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt` FROM `main`.`documents` WHERE `main`.`documents`.`id` IN (?,?) LIMIT ? OFFSET ?
+prisma:query INSERT INTO `main`.`messages` (`id`, `conversationId`, `role`, `content`, `tokens`, `createdAt`) VALUES (?,?,?,?,?,?) RETURNING `id` AS `id`, `conversationId` AS `conversationId`, `role` AS `role`, `content` AS `content`, `tokens` AS `tokens`, `createdAt` AS `createdAt`
+ POST /api/chat/stream 200 in 843ms (compile: 33ms, render: 810ms)
+ GET / 200 in 41ms (compile: 2ms, render: 38ms)
+ GET / 200 in 53ms (compile: 4ms, render: 49ms)
+ GET /api/documents 200 in 15ms (compile: 3ms, render: 12ms)
+prisma:query SELECT 1
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt`, COALESCE(`aggr_selection_0_DocumentChunk`.`_aggr_count_chunks`, 0) AS `_aggr_count_chunks` FROM `main`.`documents` LEFT JOIN (SELECT `main`.`document_chunks`.`documentId`, COUNT(*) AS `_aggr_count_chunks` FROM `main`.`document_chunks` WHERE 1=1 GROUP BY `main`.`document_chunks`.`documentId`) AS `aggr_selection_0_DocumentChunk` ON (`main`.`documents`.`id` = `aggr_selection_0_DocumentChunk`.`documentId`) WHERE 1=1 ORDER BY `main`.`documents`.`createdAt` DESC LIMIT ? OFFSET ?
+Error fetching templates: TypeError: Cannot read properties of undefined (reading 'findMany')
+    at GET (src/app/api/templates/route.ts:7:47)
+   5 | export async function GET() {
+   6 |   try {
+>  7 |     const templates = await db.promptTemplate.findMany({
+     |                                               ^
+   8 |       orderBy: [{ category: 'asc' }, { name: 'asc' }]
+   9 |     })
+  10 |     
+ GET /api/templates 500 in 84ms (compile: 2ms, render: 82ms)
+ GET /api/system-prompts 200 in 9ms (compile: 1753µs, render: 8ms)
+prisma:query SELECT `main`.`system_prompts`.`id`, `main`.`system_prompts`.`name`, `main`.`system_prompts`.`content`, `main`.`system_prompts`.`isDefault`, `main`.`system_prompts`.`createdAt`, `main`.`system_prompts`.`updatedAt` FROM `main`.`system_prompts` WHERE 1=1 ORDER BY `main`.`system_prompts`.`createdAt` DESC LIMIT ? OFFSET ?
+Error fetching templates: TypeError: Cannot read properties of undefined (reading 'findMany')
+    at GET (src/app/api/templates/route.ts:7:47)
+   5 | export async function GET() {
+   6 |   try {
+>  7 |     const templates = await db.promptTemplate.findMany({
+     |                                               ^
+   8 |       orderBy: [{ category: 'asc' }, { name: 'asc' }]
+   9 |     })
+  10 |     
+ GET /api/templates 500 in 65ms (compile: 2ms, render: 63ms)
+Error fetching templates: TypeError: Cannot read properties of undefined (reading 'findMany')
+    at GET (src/app/api/templates/route.ts:7:47)
+   5 | export async function GET() {
+   6 |   try {
+>  7 |     const templates = await db.promptTemplate.findMany({
+     |                                               ^
+   8 |       orderBy: [{ category: 'asc' }, { name: 'asc' }]
+   9 |     })
+  10 |     
+ GET /api/templates 500 in 58ms (compile: 1931µs, render: 56ms)
+prisma:query SELECT 1
+prisma:query INSERT INTO `main`.`conversations` (`id`, `title`, `createdAt`, `updatedAt`) VALUES (?,?,?,?) RETURNING `id` AS `id`, `title` AS `title`, `createdAt` AS `createdAt`, `updatedAt` AS `updatedAt`
+prisma:query INSERT INTO `main`.`messages` (`id`, `conversationId`, `role`, `content`, `tokens`, `createdAt`) VALUES (?,?,?,?,?,?) RETURNING `id` AS `id`, `conversationId` AS `conversationId`, `role` AS `role`, `content` AS `content`, `tokens` AS `tokens`, `createdAt` AS `createdAt`
+prisma:query SELECT `main`.`messages`.`id`, `main`.`messages`.`conversationId`, `main`.`messages`.`role`, `main`.`messages`.`content`, `main`.`messages`.`tokens`, `main`.`messages`.`createdAt` FROM `main`.`messages` WHERE `main`.`messages`.`conversationId` = ? ORDER BY `main`.`messages`.`createdAt` ASC LIMIT ? OFFSET ?
+prisma:query INSERT INTO `main`.`messages` (`id`, `conversationId`, `role`, `content`, `tokens`, `createdAt`) VALUES (?,?,?,?,?,?) RETURNING `id` AS `id`, `conversationId` AS `conversationId`, `role` AS `role`, `content` AS `content`, `tokens` AS `tokens`, `createdAt` AS `createdAt`
+ POST /api/chat 200 in 770ms (compile: 2ms, render: 768ms)
+✓ Compiled in 139ms
+prisma:query SELECT 1
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt`, COALESCE(`aggr_selection_0_DocumentChunk`.`_aggr_count_chunks`, 0) AS `_aggr_count_chunks` FROM `main`.`documents` LEFT JOIN (SELECT `main`.`document_chunks`.`documentId`, COUNT(*) AS `_aggr_count_chunks` FROM `main`.`document_chunks` WHERE 1=1 GROUP BY `main`.`document_chunks`.`documentId`) AS `aggr_selection_0_DocumentChunk` ON (`main`.`documents`.`id` = `aggr_selection_0_DocumentChunk`.`documentId`) WHERE 1=1 ORDER BY `main`.`documents`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET /api/documents 200 in 8ms (compile: 1894µs, render: 6ms)
+prisma:query SELECT `main`.`system_prompts`.`id`, `main`.`system_prompts`.`name`, `main`.`system_prompts`.`content`, `main`.`system_prompts`.`isDefault`, `main`.`system_prompts`.`createdAt`, `main`.`system_prompts`.`updatedAt` FROM `main`.`system_prompts` WHERE 1=1 ORDER BY `main`.`system_prompts`.`createdAt` DESC LIMIT ? OFFSET ?
+prisma:query INSERT INTO `main`.`system_prompts` (`id`, `name`, `content`, `isDefault`, `createdAt`, `updatedAt`) VALUES (?,?,?,?,?,?) RETURNING `id` AS `id`, `name` AS `name`, `content` AS `content`, `isDefault` AS `isDefault`, `createdAt` AS `createdAt`, `updatedAt` AS `updatedAt`
+ GET /api/system-prompts 200 in 8ms (compile: 1534µs, render: 6ms)
+Error fetching templates: TypeError: Cannot read properties of undefined (reading 'findMany')
+    at GET (src/app/api/templates/route.ts:7:47)
+   5 | export async function GET() {
+   6 |   try {
+>  7 |     const templates = await db.promptTemplate.findMany({
+     |                                               ^
+   8 |       orderBy: [{ category: 'asc' }, { name: 'asc' }]
+   9 |     })
+  10 |     
+ GET /api/templates 500 in 56ms (compile: 1678µs, render: 55ms)
+ GET /api/templates 200 in 53ms (compile: 45ms, render: 7ms)
+ GET / 200 in 200ms (compile: 45ms, render: 156ms)
+prisma:query SELECT 1
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt`, COALESCE(`aggr_selection_0_DocumentChunk`.`_aggr_count_chunks`, 0) AS `_aggr_count_chunks` FROM `main`.`documents` LEFT JOIN (SELECT `main`.`document_chunks`.`documentId`, COUNT(*) AS `_aggr_count_chunks` FROM `main`.`document_chunks` WHERE 1=1 GROUP BY `main`.`document_chunks`.`documentId`) AS `aggr_selection_0_DocumentChunk` ON (`main`.`documents`.`id` = `aggr_selection_0_DocumentChunk`.`documentId`) WHERE 1=1 ORDER BY `main`.`documents`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET /api/documents 200 in 7ms (compile: 1641µs, render: 5ms)
+ GET /api/templates 200 in 4ms (compile: 1418µs, render: 3ms)
+prisma:query SELECT `main`.`system_prompts`.`id`, `main`.`system_prompts`.`name`, `main`.`system_prompts`.`content`, `main`.`system_prompts`.`isDefault`, `main`.`system_prompts`.`createdAt`, `main`.`system_prompts`.`updatedAt` FROM `main`.`system_prompts` WHERE 1=1 ORDER BY `main`.`system_prompts`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET /api/system-prompts 200 in 6ms (compile: 1459µs, render: 4ms)
+prisma:query INSERT INTO `main`.`conversations` (`id`, `title`, `createdAt`, `updatedAt`) VALUES (?,?,?,?) RETURNING `id` AS `id`, `title` AS `title`, `createdAt` AS `createdAt`, `updatedAt` AS `updatedAt`
+prisma:query INSERT INTO `main`.`messages` (`id`, `conversationId`, `role`, `content`, `tokens`, `createdAt`) VALUES (?,?,?,?,?,?) RETURNING `id` AS `id`, `conversationId` AS `conversationId`, `role` AS `role`, `content` AS `content`, `tokens` AS `tokens`, `createdAt` AS `createdAt`
+prisma:query SELECT `main`.`messages`.`id`, `main`.`messages`.`conversationId`, `main`.`messages`.`role`, `main`.`messages`.`content`, `main`.`messages`.`tokens`, `main`.`messages`.`createdAt` FROM `main`.`messages` WHERE `main`.`messages`.`conversationId` = ? ORDER BY `main`.`messages`.`createdAt` ASC LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`document_chunks`.`id`, `main`.`document_chunks`.`documentId`, `main`.`document_chunks`.`content`, `main`.`document_chunks`.`chunkIndex`, `main`.`document_chunks`.`embedding`, `main`.`document_chunks`.`createdAt` FROM `main`.`document_chunks` WHERE 1=1 ORDER BY `main`.`document_chunks`.`id` ASC LIMIT ? OFFSET ?
+prisma:query INSERT INTO `main`.`messages` (`id`, `conversationId`, `role`, `content`, `tokens`, `createdAt`) VALUES (?,?,?,?,?,?) RETURNING `id` AS `id`, `conversationId` AS `conversationId`, `role` AS `role`, `content` AS `content`, `tokens` AS `tokens`, `createdAt` AS `createdAt`
+ POST /api/chat/stream 200 in 834ms (compile: 2ms, render: 831ms)
+ GET / 200 in 45ms (compile: 3ms, render: 42ms)
+ GET /api/templates 200 in 5ms (compile: 1594µs, render: 3ms)
+ GET / 200 in 39ms (compile: 1731µs, render: 37ms)
+prisma:query SELECT 1
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt`, COALESCE(`aggr_selection_0_DocumentChunk`.`_aggr_count_chunks`, 0) AS `_aggr_count_chunks` FROM `main`.`documents` LEFT JOIN (SELECT `main`.`document_chunks`.`documentId`, COUNT(*) AS `_aggr_count_chunks` FROM `main`.`document_chunks` WHERE 1=1 GROUP BY `main`.`document_chunks`.`documentId`) AS `aggr_selection_0_DocumentChunk` ON (`main`.`documents`.`id` = `aggr_selection_0_DocumentChunk`.`documentId`) WHERE 1=1 ORDER BY `main`.`documents`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET /api/documents 200 in 6ms (compile: 1616µs, render: 5ms)
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt`, COALESCE(`aggr_selection_0_DocumentChunk`.`_aggr_count_chunks`, 0) AS `_aggr_count_chunks` FROM `main`.`documents` LEFT JOIN (SELECT `main`.`document_chunks`.`documentId`, COUNT(*) AS `_aggr_count_chunks` FROM `main`.`document_chunks` WHERE 1=1 GROUP BY `main`.`document_chunks`.`documentId`) AS `aggr_selection_0_DocumentChunk` ON (`main`.`documents`.`id` = `aggr_selection_0_DocumentChunk`.`documentId`) WHERE 1=1 ORDER BY `main`.`documents`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET /api/documents 200 in 8ms (compile: 3ms, render: 5ms)
+ GET /api/system-prompts 200 in 6ms (compile: 1101µs, render: 4ms)
+prisma:query SELECT `main`.`system_prompts`.`id`, `main`.`system_prompts`.`name`, `main`.`system_prompts`.`content`, `main`.`system_prompts`.`isDefault`, `main`.`system_prompts`.`createdAt`, `main`.`system_prompts`.`updatedAt` FROM `main`.`system_prompts` WHERE 1=1 ORDER BY `main`.`system_prompts`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET /api/templates 200 in 3ms (compile: 1038µs, render: 2ms)
+prisma:query BEGIN IMMEDIATE
+prisma:query INSERT INTO `main`.`documents` (`id`, `filename`, `content`, `fileType`, `fileSize`, `chunkCount`, `createdAt`, `updatedAt`) VALUES (?,?,?,?,?,?,?,?) RETURNING `id` AS `id`
+prisma:query INSERT INTO `main`.`document_chunks` (`id`, `documentId`, `content`, `chunkIndex`, `embedding`, `createdAt`) VALUES (?,?,?,?,?,?), (?,?,?,?,?,?)
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt` FROM `main`.`documents` WHERE `main`.`documents`.`id` = ? LIMIT ? OFFSET ?
+prisma:query COMMIT
+ POST /api/documents 200 in 12ms (compile: 4ms, render: 8ms)
+ GET /api/documents/cmmpib3op00i2s7axubdeshxq 200 in 781ms (compile: 766ms, render: 16ms)
+prisma:query SELECT 1
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt` FROM `main`.`documents` WHERE (`main`.`documents`.`id` = ? AND 1=1) LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`document_chunks`.`id`, `main`.`document_chunks`.`documentId`, `main`.`document_chunks`.`content`, `main`.`document_chunks`.`chunkIndex`, `main`.`document_chunks`.`embedding`, `main`.`document_chunks`.`createdAt` FROM `main`.`document_chunks` WHERE `main`.`document_chunks`.`documentId` IN (?) ORDER BY `main`.`document_chunks`.`chunkIndex` ASC LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt` FROM `main`.`documents` WHERE (`main`.`documents`.`id` = ? AND 1=1) LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`document_chunks`.`id`, `main`.`document_chunks`.`documentId`, `main`.`document_chunks`.`content`, `main`.`document_chunks`.`chunkIndex`, `main`.`document_chunks`.`embedding`, `main`.`document_chunks`.`createdAt` FROM `main`.`document_chunks` WHERE `main`.`document_chunks`.`documentId` IN (?) ORDER BY `main`.`document_chunks`.`chunkIndex` ASC LIMIT ? OFFSET ?
+ GET /api/documents/cmmpib3op00i2s7axubdeshxq 200 in 61ms (compile: 49ms, render: 12ms)
+prisma:query INSERT INTO `main`.`conversations` (`id`, `title`, `createdAt`, `updatedAt`) VALUES (?,?,?,?) RETURNING `id` AS `id`, `title` AS `title`, `createdAt` AS `createdAt`, `updatedAt` AS `updatedAt`
+prisma:query INSERT INTO `main`.`messages` (`id`, `conversationId`, `role`, `content`, `tokens`, `createdAt`) VALUES (?,?,?,?,?,?) RETURNING `id` AS `id`, `conversationId` AS `conversationId`, `role` AS `role`, `content` AS `content`, `tokens` AS `tokens`, `createdAt` AS `createdAt`
+prisma:query SELECT `main`.`messages`.`id`, `main`.`messages`.`conversationId`, `main`.`messages`.`role`, `main`.`messages`.`content`, `main`.`messages`.`tokens`, `main`.`messages`.`createdAt` FROM `main`.`messages` WHERE `main`.`messages`.`conversationId` = ? ORDER BY `main`.`messages`.`createdAt` ASC LIMIT ? OFFSET ?
+prisma:query SELECT 1
+prisma:query INSERT INTO `main`.`messages` (`id`, `conversationId`, `role`, `content`, `tokens`, `createdAt`) VALUES (?,?,?,?,?,?) RETURNING `id` AS `id`, `conversationId` AS `conversationId`, `role` AS `role`, `content` AS `content`, `tokens` AS `tokens`, `createdAt` AS `createdAt`
+ POST /api/chat 200 in 2.3s (compile: 5ms, render: 2.2s)
+prisma:query INSERT INTO `main`.`conversations` (`id`, `title`, `createdAt`, `updatedAt`) VALUES (?,?,?,?) RETURNING `id` AS `id`, `title` AS `title`, `createdAt` AS `createdAt`, `updatedAt` AS `updatedAt`
+prisma:query INSERT INTO `main`.`messages` (`id`, `conversationId`, `role`, `content`, `tokens`, `createdAt`) VALUES (?,?,?,?,?,?) RETURNING `id` AS `id`, `conversationId` AS `conversationId`, `role` AS `role`, `content` AS `content`, `tokens` AS `tokens`, `createdAt` AS `createdAt`
+prisma:query SELECT `main`.`messages`.`id`, `main`.`messages`.`conversationId`, `main`.`messages`.`role`, `main`.`messages`.`content`, `main`.`messages`.`tokens`, `main`.`messages`.`createdAt` FROM `main`.`messages` WHERE `main`.`messages`.`conversationId` = ? ORDER BY `main`.`messages`.`createdAt` ASC LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`document_chunks`.`id`, `main`.`document_chunks`.`documentId`, `main`.`document_chunks`.`content`, `main`.`document_chunks`.`chunkIndex`, `main`.`document_chunks`.`embedding`, `main`.`document_chunks`.`createdAt` FROM `main`.`document_chunks` WHERE 1=1 ORDER BY `main`.`document_chunks`.`id` ASC LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt` FROM `main`.`documents` WHERE `main`.`documents`.`id` IN (?) LIMIT ? OFFSET ?
+prisma:query INSERT INTO `main`.`messages` (`id`, `conversationId`, `role`, `content`, `tokens`, `createdAt`) VALUES (?,?,?,?,?,?) RETURNING `id` AS `id`, `conversationId` AS `conversationId`, `role` AS `role`, `content` AS `content`, `tokens` AS `tokens`, `createdAt` AS `createdAt`
+ POST /api/chat 200 in 3.0s (compile: 2ms, render: 3.0s)
+prisma:query SELECT 1
+prisma:query INSERT INTO `main`.`conversations` (`id`, `title`, `createdAt`, `updatedAt`) VALUES (?,?,?,?) RETURNING `id` AS `id`, `title` AS `title`, `createdAt` AS `createdAt`, `updatedAt` AS `updatedAt`
+prisma:query INSERT INTO `main`.`messages` (`id`, `conversationId`, `role`, `content`, `tokens`, `createdAt`) VALUES (?,?,?,?,?,?) RETURNING `id` AS `id`, `conversationId` AS `conversationId`, `role` AS `role`, `content` AS `content`, `tokens` AS `tokens`, `createdAt` AS `createdAt`
+prisma:query SELECT `main`.`messages`.`id`, `main`.`messages`.`conversationId`, `main`.`messages`.`role`, `main`.`messages`.`content`, `main`.`messages`.`tokens`, `main`.`messages`.`createdAt` FROM `main`.`messages` WHERE `main`.`messages`.`conversationId` = ? ORDER BY `main`.`messages`.`createdAt` ASC LIMIT ? OFFSET ?
+prisma:query INSERT INTO `main`.`messages` (`id`, `conversationId`, `role`, `content`, `tokens`, `createdAt`) VALUES (?,?,?,?,?,?) RETURNING `id` AS `id`, `conversationId` AS `conversationId`, `role` AS `role`, `content` AS `content`, `tokens` AS `tokens`, `createdAt` AS `createdAt`
+ POST /api/chat/stream 200 in 522ms (compile: 1912µs, render: 520ms)
+prisma:query SELECT `main`.`system_prompts`.`id`, `main`.`system_prompts`.`name`, `main`.`system_prompts`.`content`, `main`.`system_prompts`.`isDefault`, `main`.`system_prompts`.`createdAt`, `main`.`system_prompts`.`updatedAt` FROM `main`.`system_prompts` WHERE 1=1 ORDER BY `main`.`system_prompts`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET /api/system-prompts 200 in 6ms (compile: 1809µs, render: 4ms)
+prisma:query SELECT 1
+prisma:query SELECT `main`.`conversations`.`id`, `main`.`conversations`.`title`, `main`.`conversations`.`createdAt`, `main`.`conversations`.`updatedAt` FROM `main`.`conversations` WHERE (`main`.`conversations`.`id` = ? AND 1=1) LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`messages`.`id`, `main`.`messages`.`conversationId`, `main`.`messages`.`role`, `main`.`messages`.`content`, `main`.`messages`.`tokens`, `main`.`messages`.`createdAt` FROM `main`.`messages` WHERE `main`.`messages`.`conversationId` IN (?) ORDER BY `main`.`messages`.`createdAt` ASC LIMIT ? OFFSET ?
+Export error: TypeError: Cannot read properties of undefined (reading 'create')
+    at POST (src/app/api/export/route.ts:105:25)
+  103 |
+  104 |     // Save export record
+> 105 |     await db.chatExport.create({
+      |                         ^
+  106 |       data: {
+  107 |         conversationId,
+  108 |         format,
+ POST /api/export 500 in 369ms (compile: 175ms, render: 193ms)
+prisma:query SELECT 1
+prisma:query SELECT `main`.`conversations`.`id`, `main`.`conversations`.`title`, `main`.`conversations`.`createdAt`, `main`.`conversations`.`updatedAt` FROM `main`.`conversations` WHERE (`main`.`conversations`.`id` = ? AND 1=1) LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`messages`.`id`, `main`.`messages`.`conversationId`, `main`.`messages`.`role`, `main`.`messages`.`content`, `main`.`messages`.`tokens`, `main`.`messages`.`createdAt` FROM `main`.`messages` WHERE `main`.`messages`.`conversationId` IN (?) ORDER BY `main`.`messages`.`createdAt` ASC LIMIT ? OFFSET ?
+ POST /api/export 200 in 42ms (compile: 34ms, render: 8ms)
+prisma:query SELECT `main`.`conversations`.`id`, `main`.`conversations`.`title`, `main`.`conversations`.`createdAt`, `main`.`conversations`.`updatedAt` FROM `main`.`conversations` WHERE (`main`.`conversations`.`id` = ? AND 1=1) LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`messages`.`id`, `main`.`messages`.`conversationId`, `main`.`messages`.`role`, `main`.`messages`.`content`, `main`.`messages`.`tokens`, `main`.`messages`.`createdAt` FROM `main`.`messages` WHERE `main`.`messages`.`conversationId` IN (?) ORDER BY `main`.`messages`.`createdAt` ASC LIMIT ? OFFSET ?
+ POST /api/export 200 in 7ms (compile: 1943µs, render: 5ms)
+ POST /api/embeddings 200 in 118ms (compile: 109ms, render: 10ms)
+prisma:query SELECT 1
+prisma:query INSERT INTO `main`.`conversations` (`id`, `title`, `createdAt`, `updatedAt`) VALUES (?,?,?,?) RETURNING `id` AS `id`, `title` AS `title`, `createdAt` AS `createdAt`, `updatedAt` AS `updatedAt`
+prisma:query INSERT INTO `main`.`messages` (`id`, `conversationId`, `role`, `content`, `tokens`, `createdAt`) VALUES (?,?,?,?,?,?) RETURNING `id` AS `id`, `conversationId` AS `conversationId`, `role` AS `role`, `content` AS `content`, `tokens` AS `tokens`, `createdAt` AS `createdAt`
+prisma:query SELECT `main`.`messages`.`id`, `main`.`messages`.`conversationId`, `main`.`messages`.`role`, `main`.`messages`.`content`, `main`.`messages`.`tokens`, `main`.`messages`.`createdAt` FROM `main`.`messages` WHERE `main`.`messages`.`conversationId` = ? ORDER BY `main`.`messages`.`createdAt` ASC LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`document_chunks`.`id`, `main`.`document_chunks`.`documentId`, `main`.`document_chunks`.`content`, `main`.`document_chunks`.`chunkIndex`, `main`.`document_chunks`.`embedding`, `main`.`document_chunks`.`createdAt` FROM `main`.`document_chunks` WHERE 1=1 ORDER BY `main`.`document_chunks`.`id` ASC LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt` FROM `main`.`documents` WHERE `main`.`documents`.`id` IN (?) LIMIT ? OFFSET ?
+prisma:query INSERT INTO `main`.`messages` (`id`, `conversationId`, `role`, `content`, `tokens`, `createdAt`) VALUES (?,?,?,?,?,?) RETURNING `id` AS `id`, `conversationId` AS `conversationId`, `role` AS `role`, `content` AS `content`, `tokens` AS `tokens`, `createdAt` AS `createdAt`
+ POST /api/chat 200 in 8.2s (compile: 1543µs, render: 8.2s)
+ GET /api/conversations/list 200 in 28ms (compile: 19ms, render: 9ms)
+prisma:query SELECT 1
+prisma:query SELECT `main`.`conversations`.`id`, `main`.`conversations`.`title`, `main`.`conversations`.`createdAt`, `main`.`conversations`.`updatedAt` FROM `main`.`conversations` WHERE 1=1 ORDER BY `main`.`conversations`.`updatedAt` DESC LIMIT ? OFFSET ?
+prisma:query SELECT `main`.`conversations`.`id`, `main`.`conversations`.`title`, `main`.`conversations`.`createdAt`, `main`.`conversations`.`updatedAt` FROM `main`.`conversations` WHERE (`main`.`conversations`.`id` = ? AND 1=1) LIMIT ? OFFSET ?
+prisma:query INSERT INTO `main`.`messages` (`id`, `conversationId`, `role`, `content`, `tokens`, `createdAt`) VALUES (?,?,?,?,?,?) RETURNING `id` AS `id`, `conversationId` AS `conversationId`, `role` AS `role`, `content` AS `content`, `tokens` AS `tokens`, `createdAt` AS `createdAt`
+prisma:query SELECT `main`.`messages`.`id`, `main`.`messages`.`conversationId`, `main`.`messages`.`role`, `main`.`messages`.`content`, `main`.`messages`.`tokens`, `main`.`messages`.`createdAt` FROM `main`.`messages` WHERE `main`.`messages`.`conversationId` = ? ORDER BY `main`.`messages`.`createdAt` ASC LIMIT ? OFFSET ?
+prisma:query INSERT INTO `main`.`messages` (`id`, `conversationId`, `role`, `content`, `tokens`, `createdAt`) VALUES (?,?,?,?,?,?) RETURNING `id` AS `id`, `conversationId` AS `conversationId`, `role` AS `role`, `content` AS `content`, `tokens` AS `tokens`, `createdAt` AS `createdAt`
+ POST /api/chat 200 in 1520ms (compile: 1592µs, render: 1518ms)
+prisma:query SELECT 1
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt`, COALESCE(`aggr_selection_0_DocumentChunk`.`_aggr_count_chunks`, 0) AS `_aggr_count_chunks` FROM `main`.`documents` LEFT JOIN (SELECT `main`.`document_chunks`.`documentId`, COUNT(*) AS `_aggr_count_chunks` FROM `main`.`document_chunks` WHERE 1=1 GROUP BY `main`.`document_chunks`.`documentId`) AS `aggr_selection_0_DocumentChunk` ON (`main`.`documents`.`id` = `aggr_selection_0_DocumentChunk`.`documentId`) WHERE 1=1 ORDER BY `main`.`documents`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET /api/documents 200 in 6ms (compile: 1433µs, render: 5ms)
+prisma:query DELETE FROM `main`.`documents` WHERE (`main`.`documents`.`id` = ? AND 1=1) RETURNING `id` AS `id`, `filename` AS `filename`, `content` AS `content`, `fileType` AS `fileType`, `fileSize` AS `fileSize`, `chunkCount` AS `chunkCount`, `createdAt` AS `createdAt`, `updatedAt` AS `updatedAt`
+ DELETE /api/documents/cmmpib3op00i2s7axubdeshxq 200 in 61ms (compile: 50ms, render: 11ms)
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt`, COALESCE(`aggr_selection_0_DocumentChunk`.`_aggr_count_chunks`, 0) AS `_aggr_count_chunks` FROM `main`.`documents` LEFT JOIN (SELECT `main`.`document_chunks`.`documentId`, COUNT(*) AS `_aggr_count_chunks` FROM `main`.`document_chunks` WHERE 1=1 GROUP BY `main`.`document_chunks`.`documentId`) AS `aggr_selection_0_DocumentChunk` ON (`main`.`documents`.`id` = `aggr_selection_0_DocumentChunk`.`documentId`) WHERE 1=1 ORDER BY `main`.`documents`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET /api/documents 200 in 8ms (compile: 2ms, render: 6ms)
+ GET / 200 in 48ms (compile: 3ms, render: 45ms)
+prisma:query SELECT 1
+prisma:query SELECT `main`.`documents`.`id`, `main`.`documents`.`filename`, `main`.`documents`.`content`, `main`.`documents`.`fileType`, `main`.`documents`.`fileSize`, `main`.`documents`.`chunkCount`, `main`.`documents`.`createdAt`, `main`.`documents`.`updatedAt`, COALESCE(`aggr_selection_0_DocumentChunk`.`_aggr_count_chunks`, 0) AS `_aggr_count_chunks` FROM `main`.`documents` LEFT JOIN (SELECT `main`.`document_chunks`.`documentId`, COUNT(*) AS `_aggr_count_chunks` FROM `main`.`document_chunks` WHERE 1=1 GROUP BY `main`.`document_chunks`.`documentId`) AS `aggr_selection_0_DocumentChunk` ON (`main`.`documents`.`id` = `aggr_selection_0_DocumentChunk`.`documentId`) WHERE 1=1 ORDER BY `main`.`documents`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET /api/documents 200 in 8ms (compile: 1957µs, render: 6ms)
+ GET /api/system-prompts 200 in 6ms (compile: 1321µs, render: 4ms)
+prisma:query SELECT `main`.`system_prompts`.`id`, `main`.`system_prompts`.`name`, `main`.`system_prompts`.`content`, `main`.`system_prompts`.`isDefault`, `main`.`system_prompts`.`createdAt`, `main`.`system_prompts`.`updatedAt` FROM `main`.`system_prompts` WHERE 1=1 ORDER BY `main`.`system_prompts`.`createdAt` DESC LIMIT ? OFFSET ?
+ GET /api/templates 200 in 4ms (compile: 1511µs, render: 3ms)

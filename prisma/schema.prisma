@@ -11,11 +11,11 @@ datasource db {
 }
 
 model Conversation {
-  id        String     @id @default(cuid())
-  title     String?
-  createdAt DateTime   @default(now())
-  updatedAt DateTime   @updatedAt
-  messages  Message[]
+  id          String     @id @default(cuid())
+  title       String?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  messages    Message[]
   
   @@map("conversations")
 }
@@ -27,9 +27,19 @@ model Message {
   content        String
   tokens         Int          @default(0)
   createdAt      DateTime     @default(now())
-  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  
+  // For branching
+  parentMessageId String?
+  parentMessage   Message?    @relation("MessageBranches", fields: [parentMessageId], references: [id])
+  childMessages   Message[]   @relation("MessageBranches")
+  
+  // For citations
+  citations       Citation[]
+  
+  conversation    Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
   
   @@index([conversationId])
+  @@index([parentMessageId])
   @@map("messages")
 }
 
@@ -37,7 +47,7 @@ model Document {
   id          String      @id @default(cuid())
   filename    String
   content     String
-  fileType    String      // 'txt', 'md', 'pdf', etc.
+  fileType    String      // 'txt', 'md', 'pdf', 'docx', 'image'
   fileSize    Int
   chunkCount  Int         @default(0)
   createdAt   DateTime    @default(now())
@@ -52,7 +62,13 @@ model DocumentChunk {
   documentId   String
   content      String
   chunkIndex   Int
-  embedding    String?  // JSON array of floats
+  
+  // Real embeddings - stored as JSON array of floats
+  embedding    String?  
+  
+  // For keyword search (BM25 tokens)
+  tokens       String?  // JSON array of tokenized words
+  
   createdAt    DateTime @default(now())
   document     Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
   
@@ -60,13 +76,59 @@ model DocumentChunk {
   @@map("document_chunks")
 }
 
+model Citation {
+  id          String   @id @default(cuid())
+  messageId   String
+  documentId  String
+  chunkIndex  Int
+  content     String   // The cited text
+  score       Float    // Similarity score
+  
+  createdAt   DateTime @default(now())
+  
+  message     Message  @relation(fields: [messageId], references: [id], onDelete: Cascade)
+  
+  @@index([messageId])
+  @@map("citations")
+}
+
 model SystemPrompt {
-  id        String   @id @default(cuid())
-  name      String
-  content   String
-  isDefault Boolean  @default(false)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id          String   @id @default(cuid())
+  name        String
+  content     String
+  isDefault   Boolean  @default(false)
+  
+  // For few-shot examples
+  examples    String?  // JSON array of {input, output} pairs
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
   
   @@map("system_prompts")
+}
+
+model PromptTemplate {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  template    String
+  category    String   @default("general") // "general", "coding", "writing", "analysis"
+  variables   String?  // JSON array of variable names
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  @@map("prompt_templates")
+}
+
+model ChatExport {
+  id              String   @id @default(cuid())
+  conversationId  String
+  format          String   // "markdown", "pdf", "json"
+  content         String   // The exported content
+  filename        String
+  
+  createdAt       DateTime @default(now())
+  
+  @@map("chat_exports")
 }

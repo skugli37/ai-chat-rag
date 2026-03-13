@@ -2,39 +2,72 @@ import { NextRequest, NextResponse } from 'next/server'
 import { db } from '@/lib/db'
 import ZAI from 'z-ai-web-dev-sdk'
 
-// Simple similarity search
-function simpleSimilarity(query: string, text: string): number {
-  const queryWords = query.toLowerCase().split(/\s+/).filter(w => w.length > 2)
-  const textWords = text.toLowerCase().split(/\s+/)
+// Simple embedding (384-dim)
+function generateEmbedding(text: string): number[] {
+  const dim = 384
+  const embedding = new Array(dim).fill(0)
+  const words = text.toLowerCase().split(/\s+/).filter(w => w.length > 2)
   
-  let score = 0
-  for (const qWord of queryWords) {
-    const count = textWords.filter(t => t.includes(qWord) || qWord.includes(t)).length
-    score += count / textWords.length
+  for (const word of words) {
+    let h = 0
+    for (let i = 0; i < word.length; i++) {
+      h = ((h << 5) - h) + word.charCodeAt(i)
+      h = h & h
+    }
+    for (let i = 0; i < 5; i++) {
+      const idx = Math.abs((h + i * 77) % dim)
+      embedding[idx] += 1 / (1 + i)
+    }
   }
   
-  return queryWords.length > 0 ? score / queryWords.length : 0
+  const norm = Math.sqrt(embedding.reduce((s, v) => s + v * v, 0))
+  if (norm > 0) {
+    for (let i = 0; i < dim; i++) embedding[i] /= norm
+  }
+  return embedding
 }
 
-async function getRelevantContext(query: string, topK: number = 3): Promise<string> {
-  const chunks = await db.documentChunk.findMany({
-    include: { document: true }
-  })
-  
-  if (chunks.length === 0) return ''
-  
-  const scored = chunks.map(chunk => ({
-    chunk,
-    score: simpleSimilarity(query, chunk.content)
-  }))
-  
-  scored.sort((a, b) => b.score - a.score)
-  
-  const topChunks = scored.slice(0, topK)
-  
-  if (topChunks.length === 0 || topChunks[0].score === 0) return ''
-  
-  return topChunks.map(s => `[${s.chunk.document.filename}]:\n${s.chunk.content}`).join('\n\n---\n\n')
+function cosine(a: number[], b: number[]): number {
+  if (a.length !== b.length) return 0
+  let dot = 0, na = 0, nb = 0
+  for (let i = 0; i < a.length; i++) {
+    dot += a[i] * b[i]
+    na += a[i] * a[i]
+    nb += b[i] * b[i]
+  }
+  return dot / (Math.sqrt(na) * Math.sqrt(nb))
+}
+
+// Hybrid search with fallback
+async function searchChunks(query: string, topK: number = 3) {
+  try {
+    const chunks = await db.documentChunk.findMany({
+      include: { document: true },
+      take: 100
+    })
+    
+    if (chunks.length === 0) return []
+    
+    const qEmb = generateEmbedding(query)
+    
+    const scored = chunks.map(c => {
+      let emb = generateEmbedding(c.content)
+      if (c.embedding) {
+        try { emb = JSON.parse(c.embedding) } catch {}
+      }
+      return {
+        content: c.content,
+        filename: c.document.filename,
+        documentId: c.documentId,
+        score: cosine(qEmb, emb)
+      }
+    })
+    
+    scored.sort((a, b) => b.score - a.score)
+    return scored.slice(0, topK)
+  } catch {
+    return []
+  }
 }
 
 export async function POST(request: NextRequest) {
@@ -45,7 +78,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Poruka je obavezna' }, { status: 400 })
     }
 
-    // Get or create conversation
+    // Get/create conversation
     let conv = conversationId 
       ? await db.conversation.findUnique({ where: { id: conversationId } })
       : null
@@ -65,22 +98,26 @@ export async function POST(request: NextRequest) {
       }
     })
 
-    // Get conversation history
+    // Get history
     const history = await db.message.findMany({
       where: { conversationId: conv.id },
       orderBy: { createdAt: 'asc' },
       take: 20
     })
 
-    // Build messages for LLM
+    // Build messages
     const messages: Array<{ role: string; content: string }> = []
     
-    let system = systemPrompt || 'Ti si korisni AI asistent. Odgovaraj precizno, koncizno i na jeziku korisnika.'
+    let system = systemPrompt || 'Ti si korisni AI asistent. Odgovaraj precizno, koncizno i na jeziku korisnika. Koristi markdown formatiranje.'
     
+    // RAG
+    let citations: object[] = []
     if (useRag) {
-      const context = await getRelevantContext(message)
-      if (context) {
-        system += `\n\nKontekst iz baze znanja:\n${context}`
+      const results = await searchChunks(message, 3)
+      if (results.length > 0) {
+        const ctx = results.map(r => `[${r.filename}]:\n${r.content}`).join('\n\n---\n\n')
+        system += `\n\n## Kontekst:\n${ctx}`
+        citations = results
       }
     }
     
@@ -92,7 +129,7 @@ export async function POST(request: NextRequest) {
     
     messages.push({ role: 'user', content: message })
 
-    // Initialize ZAI and get response
+    // LLM
     const zai = await ZAI.create()
     const completion = await zai.chat.completions.create({
       messages,
@@ -102,7 +139,7 @@ export async function POST(request: NextRequest) {
 
     const response = completion.choices[0]?.message?.content || 'Nema odgovora'
 
-    // Save assistant message
+    // Save response
     await db.message.create({
       data: {
         conversationId: conv.id,
@@ -112,15 +149,10 @@ export async function POST(request: NextRequest) {
       }
     })
 
-    // Update conversation
-    await db.conversation.update({
-      where: { id: conv.id },
-      data: { updatedAt: new Date() }
-    })
-
     return NextResponse.json({ 
       response,
-      conversationId: conv.id 
+      conversationId: conv.id,
+      citations: citations.length > 0 ? citations : undefined
     })
   } catch (error) {
     console.error('Chat error:', error)

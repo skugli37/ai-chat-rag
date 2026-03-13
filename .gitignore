@@ -49,3 +49,11 @@ prompt
 server.log
 # Skills directory
 /skills/
+# Additional ignores
+db/*.db
+db/*.db-journal
+.zscripts/
+mini-services/*/node_modules/
+mini-services/*/bun.lock
+*.log
+
